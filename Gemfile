@@ -1,5 +1,9 @@
 source 'https://rubygems.org'
 
+group :production do
+  gem 'pg'
+end
+
 gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
