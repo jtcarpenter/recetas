@@ -1,1 +1,15 @@
-<h1>index posts</h1>
+<h1>Posts</h1>
+
+<ol>
+<% @posts.each do |post| %>
+  <li>
+    <h2><%= post.title %></h2>
+    <p><%= post.updated_at %></p>
+    <%= link_to 'Show', post %>
+    <% #if logged_in %>
+    <%= link_to 'Edit', edit_post_path(post) %>
+    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+    <% #end %>
+  </li>
+<% end %>
+</ol>

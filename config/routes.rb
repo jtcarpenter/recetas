@@ -1,4 +1,5 @@
 Recetas::Application.routes.draw do
+  match "posts/drafts" => "posts#drafts"
   resources :posts
   # The priority is based upon order of creation:
   # first created -> highest priority.

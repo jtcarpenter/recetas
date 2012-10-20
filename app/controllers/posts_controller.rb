@@ -5,6 +5,13 @@ class PostsController < ApplicationController
   def index
     @posts = Post.all
     # this needs to be filtered on publish
+    # if clicked on drafts filtered on unpublished
+  end
+
+  def drafts
+    # if !logged_in redirect
+    @posts = Post.all
+    render action: "index"
   end
 
   def show
@@ -21,12 +28,20 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(params[:post])
+    if @post.save
+      redirect_to @post, notice: 'Post was successfully created.'
+    else
+      render action: "new"
+    end
   end
 
   def update
-    @post = Post.new(params[:post])
+    @post = Post.find(params[:id])
   end
 
   def destroy
+    @post = Post.find(params[:id])
+    @post.destroy
+    redirect_to posts_url
   end
 end

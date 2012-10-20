@@ -1,1 +1,21 @@
-<h1>show post</h1>
+<h1><%= @post.title %></h1>
+
+<% #if logged_in %>
+<p id="notice"><%= notice %></p>
+<% #end %>
+
+<% if @post.summary %>
+<p>
+  <%= @post.summary %>
+</p>
+<% end %>
+
+<% if @post.image %>
+<p>
+  <%= @post.image %>
+</p>
+<% end %>
+
+<% #if logged_id %>
+<%= link_to 'Edit', edit_post_path(@post) %>
+<% #end %>
