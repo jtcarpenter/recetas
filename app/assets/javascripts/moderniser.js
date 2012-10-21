@@ -4,4 +4,4 @@ document.createElement("article");
 document.createElement("section");
 document.createElement("footer");
 
-alert('moderniser');
+//alert('moderniser');
