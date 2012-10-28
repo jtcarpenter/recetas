@@ -9,14 +9,17 @@
 </head>
 <body>
 
-<% #if logged_in %>
+<% if user_signed_in? %>
 <%= render 'shared/admin_nav' %>
-<% #end %>
+<% end %>
 
 <header>
   <h1>Recetas de Marta</h1>
 </header>
 <section class="main">
+
+<p class="notice"><%= notice %></p>
+<p class="alert"><%= alert %></p>
 
 <%= yield %>
 
