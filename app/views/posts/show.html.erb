@@ -1,8 +1,8 @@
 <h1><%= @post.title %></h1>
 
-<% #if logged_in %>
+<% if user_signed_in? %>
 <p id="notice"><%= notice %></p>
-<% #end %>
+<% end %>
 
 <% if @post.summary %>
 <p>
@@ -16,6 +16,6 @@
 </p>
 <% end %>
 
-<% #if logged_id %>
+<% if user_signed_in? %>
 <%= link_to 'Edit', edit_post_path(@post) %>
-<% #end %>
+<% end %>

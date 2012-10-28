@@ -1,5 +1,6 @@
 Recetas::Application.routes.draw do
   devise_for :users
+  resources :users
 
   match "posts/drafts" => "posts#drafts"
   resources :posts
