@@ -7,7 +7,4 @@
 <% end %>
 <p>Signed in as <%= current_user.email %></p>
 <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-<!--<%= link_to "New User", new_user_registration_path %>-->
-<!-- this won't work if we are signed in -->
-<!-- don't want this to automatically sign in new user -->
 </nav>
