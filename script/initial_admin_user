@@ -1,0 +1,4 @@
+#!/usr/bin/env ruby
+# rails runner script/initial_admin_user
+
+puts 'hello'
