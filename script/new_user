@@ -1,0 +1,69 @@
+#!/usr/bin/env ruby
+# rails runner script/new_user example@domain.con true|false
+require 'io/console'
+
+class String
+  def to_b
+    case self
+    when /^(true|t|yes|y|1)$/i then true
+    when /^(false|f|no|n|0)$/i then false
+    else self
+    end
+  end
+end
+
+
+if ARGV[0].nil?
+  puts "An email address is required."
+  exit
+end
+
+email = ARGV[0]
+admin = false
+
+if email !~ /^.+@.+\..+$/
+  puts 'A valid email address is required.'
+  exit
+end
+
+if  User.exists?(:email => email)
+  puts 'User already exists'
+  exit
+end
+
+if !ARGV[1].nil?
+  admin = ARGV[1].to_b
+  unless !!admin == admin
+    puts "Second argument must describe a boolean"
+    exit
+  end
+end
+
+
+attempts = 0
+maximum_attempts = 5
+password = ''
+password_confirmation = ''
+while password.empty? || password != password_confirmation
+  if password != password_confirmation
+    puts 'Passwords do not match'
+  end
+  if password.empty? && attempts > 0
+    puts 'Password cannot be empty.'
+  end
+  if attempts == maximum_attempts
+    exit
+  end
+  puts 'Enter password'
+  password = STDIN.noecho(&:gets).strip
+  puts 'Confirm password'
+  password_confirmation = STDIN.noecho(&:gets).strip
+  attempts += 1;
+end
+
+user = User.new({:email => email, :password => password, :password_confirmation => password_confirmation, :admin => admin })
+if user.save(:validate => false)
+  puts "User #{email} saved."
+  exit
+end
+puts 'There was a problem saving user.'
