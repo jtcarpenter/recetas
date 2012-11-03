@@ -7,3 +7,15 @@ en:
     successfully_created: "Post was successfully created."
   users:
     created: "created"
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              too_short: "Password must be at least six characters"
+              confirmation: "Passwords don't match"
+        post:
+          attributes:
+            title:
+              blank: "The title cannot be blank"

@@ -1,4 +1,4 @@
-<h2>Entrar</h2>
+<h2><%= t("devise.sessions.sign_in") %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div><%= f.label :email, "Correo electrónico" %><br />

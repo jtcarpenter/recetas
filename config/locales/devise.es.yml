@@ -22,6 +22,7 @@ es:
     sessions:
       signed_in: 'Iniciaste sesión correctamente.'
       signed_out: 'Cerraste sesión correctamente.'
+      sign_in: 'Entrar'
     passwords:
       send_instructions: 'Recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos.'
       updated: 'Tu contraseña fue cambiada correctamente. Has iniciado sesión.'
@@ -31,6 +32,7 @@ es:
       send_instructions: 'Recibirás instrucciones para confirmar tu cuenta en tu email en unos minutos.'
       send_paranoid_instructions: 'Si tu email existe en el sistema, recibirás instrucciones para confirmar tu cuenta en tu email en unos minutos.'
       confirmed: 'Tu cuenta fue confirmada. Has iniciado sesión.'
+      resend_instructions: "Vuelva a enviar instrucciones de confirmación"
     registrations:
       signed_up: 'Bienvenido! Te has registrado correctamente.'
       signed_up_but_unconfirmed: 'Te hemos enviado un email con instrucciones para que confirmes tu cuenta.'

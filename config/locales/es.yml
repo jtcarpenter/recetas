@@ -4,14 +4,13 @@ es:
     successfully_created: "Entrada ha sido creado con éxito."
   users:
     created: "creado"
-    de:
   activerecord:
     errors:
       models:
         user:
           attributes:
             password:
-              too_short: "Demasiado corto"
+              too_short: "Contraseña tiene que tener al menos seis caracteres"
               confirmation: "Contraseñas no coinciden"
         post:
           attributes:
