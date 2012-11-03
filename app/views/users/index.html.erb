@@ -1,4 +1,4 @@
-<h1>Users</h1>
+<h1>Usuarios</h1>
 
 <ol>
 <% @users.each do |user| %>
@@ -7,7 +7,7 @@
     <p><%= user.updated_at %></p>
     <% if current_user.try(:admin?) %>
       <% if true || current_user.access == 'super' %> 
-      <%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %>
+      <%= link_to 'Destruir', user, method: :delete, data: { confirm: '¿Estas seguro?' } %>
       <% end %>
     <% end %>
   </li>

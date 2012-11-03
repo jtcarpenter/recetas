@@ -1,0 +1,19 @@
+es:
+  hello: "Hola Mundo"
+  posts:
+    successfully_created: "Entrada ha sido creado con éxito."
+  users:
+    created: "creado"
+    de:
+  activerecord:
+    errors:
+      models:
+        user:
+          attributes:
+            password:
+              too_short: "Demasiado corto"
+              confirmation: "Contraseñas no coinciden"
+        post:
+          attributes:
+            title:
+              blank: "El título no puede estar en blanco"

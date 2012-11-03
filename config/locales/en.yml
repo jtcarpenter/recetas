@@ -3,3 +3,7 @@
 
 en:
   hello: "Hello world"
+  posts:
+    successfully_created: "Post was successfully created."
+  users:
+    created: "created"

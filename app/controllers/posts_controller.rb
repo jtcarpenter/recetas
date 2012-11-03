@@ -10,7 +10,6 @@ class PostsController < ApplicationController
   end
 
   def drafts
-    # if !logged_in redirect
     @posts = Post.all
     render action: "index"
   end
@@ -30,7 +29,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(params[:post])
     if @post.save
-      redirect_to @post, notice: 'Post was successfully created.'
+      redirect_to @post, notice: t("posts.successfully_created")
     else
       render action: "new"
     end
