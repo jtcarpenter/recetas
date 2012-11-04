@@ -2,8 +2,8 @@
   <%= javascript_include_tag 'edit-post' %>
 <% end %>
 
-<h1>Nueva Entrada</h1>
+<h1><%= t("posts.new.title") %></h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Cancel', posts_path %>
+<%= link_to t("posts.new.cancel"), posts_path %>

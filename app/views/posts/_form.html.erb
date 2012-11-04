@@ -1,7 +1,7 @@
 <%= form_for(@post) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@post.errors.count, "error") %> prohibido este entrada se guarde:</h2>
+      <h2><%= t('posts.form.errors', :count => @post.errors.count) %> <%= t("posts.form.errors_message") %></h2>
       <ul>
       <% @post.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -11,23 +11,23 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title, "Título" %><br />
+    <%= f.label :title, t("posts.form.title") %><br />
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :published, "Publicado" %><br />
+    <%= f.label :published, t("posts.form.published") %><br />
     <%= f.check_box :published %>
   </div>
   <div class="field">
-    <%= f.label :summary, "Resumen" %><br />
+    <%= f.label :summary, t("posts.form.summary") %><br />
     <%= f.text_area :summary %>
   </div>
   <div class="field">
-    <%= f.label :image, "Imagen" %><br />
+    <%= f.label :image, t("posts.form.image") %><br />
     <%= f.file_field :image %>
   </div>
   <div class="actions">
-    <%= f.submit "Crear entrada" %>
+    <%= f.submit t("posts.form.create") %>
   </div>
 
 <% end %>

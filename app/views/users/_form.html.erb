@@ -1,7 +1,7 @@
 <%= form_for(@user) do |f| %>  
   <% if @user.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibido este usuario se guarde:</h2>
+      <h2><%= t('users.form.errors', :count => @user.errors.count) %> <%= t("users.form.errors_message") %></h2>
       <ul>
       <% @user.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
@@ -10,17 +10,17 @@
     </div>
   <% end %>
 
-  <div><%= f.label :admin %><br />
+  <div><%= f.label :admin, t("users.form.admin") %><br />
   <%= f.check_box :admin %></div>
 
-  <div><%= f.label :email, "Correo electrónico" %><br />
+  <div><%= f.label :email, t("users.form.email") %><br />
   <%= f.email_field :email %></div>
 
-  <div><%= f.label :password, "Contraseña" %><br />
+  <div><%= f.label :password, t("users.form.password") %><br />
   <%= f.password_field :password %></div>
 
-  <div><%= f.label :password_confirmation, "Contraseña de confirmación" %><br />
+  <div><%= f.label :password_confirmation, t("users.form.password_confirmation") %><br />
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.submit "Guardar" %></div>
+  <div><%= f.submit t("users.form.save") %></div>
 <% end %>

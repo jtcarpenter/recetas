@@ -1,10 +1,10 @@
 <nav>
-<%= link_to 'Nueva Entrada', new_post_path %>
-<%= link_to 'Borradores', posts_path %>
+<%= link_to t("shared.admin_nav.new_post_link"), new_post_path %>
+<%= link_to t("shared.admin_nav.drafts_link"), '/posts/drafts' %>
 <% if current_user.try(:admin?) %>
-<%= link_to 'Nuevo Usuario', new_user_path %>
-<%= link_to 'Usuarios', users_path %>
+<%= link_to t("shared.admin_nav.new_user_link"), new_user_path %>
+<%= link_to t("shared.admin_nav.users_link"), users_path %>
 <% end %>
 <p>Conectado como <%= current_user.email %></p>
-<%= link_to "Salir", destroy_user_session_path, :method => :delete %>
+<%= link_to t("shared.admin_nav.logout_link"), destroy_user_session_path, :method => :delete %>
 </nav>

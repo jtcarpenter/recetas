@@ -1,14 +1,14 @@
-<h1>Entradas</h1>
+<h1><%= t("posts.index.title") %></h1>
 
 <ol>
 <% @posts.each do |post| %>
   <li>
     <h2><%= post.title %></h2>
     <p><%= post.updated_at %></p>
-    <%= link_to 'Mostrar', post %>
+    <%= link_to t("posts.index.show_link"), post %>
     <% if user_signed_in? %>
-    <%= link_to 'Editar', edit_post_path(post) %>
-    <%= link_to 'Destruir', post, method: :delete, data: { confirm: '¿Estas seguro?' } %>
+    <%= link_to t("posts.index.edit_link"), edit_post_path(post) %>
+    <%= link_to t("posts.index.destroy_link"), post, method: :delete, data: { confirm: t("posts.index.destroy_warning") } %>
     <% end %>
   </li>
 <% end %>

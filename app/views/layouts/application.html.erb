@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <title>Recetas</title>
+  <title><%= t("layouts.application.title") %></title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= yield(:head) %>
@@ -14,7 +14,7 @@
 <% end %>
 
 <header>
-  <h1>Recetas de Marta</h1>
+  <h1><%= t("layouts.application.title") %></h1>
 </header>
 <section class="main">
 

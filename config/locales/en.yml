@@ -2,11 +2,64 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  layouts:
+    application:
+      title: "Marta's Recipes"
+  shared:
+    admin_nav:
+      new_post_link: "New Post"
+      drafts_link: "Drafts"
+      new_user_link: "New User"
+      users_link: "Users"
+      logout_link: "Logout"
   posts:
     successfully_created: "Post was successfully created."
+    successfully_updated: "Post was successfully updated."
+    form:
+      errors: 
+        zero: "0 errors"
+        one: "1 error"
+        other: "%{count} errors"
+      errors_message: "prevented this post from being saved:"
+      title: "Title"
+      published: "Published"
+      summary: "Summary"
+      image: "Image"
+      create: "Save"
+    edit:
+      title: "Edit Post"
+      cancel: "Cancel"
+    index:
+      title: "Posts"
+      show_link: "Show"
+      edit_link: "Edit"
+      destroy_link: "Destroy"
+      destroy_warning: "Are you sure?"
+    new:
+      title: "New Post"
+      cancel: "Cancel"
+    show:
+      edit_post_link: "Edit"
   users:
     created: "created"
+    form:
+      errors: 
+        zero: "0 errors"
+        one: "1 error"
+        other: "%{count} errors"
+      errors_message: "prevented this user from being saved:"
+      admin: "Admin"
+      email: "Email"
+      password: "Password"
+      password_confirmation: "Confirm Password"
+      save: "Save"
+    index:
+      title: "Users"
+      destroy: "Destroy"
+      destroy_warning: "Are you sure?"
+    new:
+      title: "Nuevo Usuario"
+      cancel: "Cancelar"
   activerecord:
     errors:
       models:
@@ -15,6 +68,7 @@ en:
             password:
               too_short: "Password must be at least six characters"
               confirmation: "Passwords don't match"
+              blank: "Password cannot be blank"
         post:
           attributes:
             title:
