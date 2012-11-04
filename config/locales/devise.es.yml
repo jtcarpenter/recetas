@@ -23,16 +23,32 @@ es:
       signed_in: 'Iniciaste sesión correctamente.'
       signed_out: 'Cerraste sesión correctamente.'
       sign_in: 'Entrar'
+      email: 'Correo electrónico'
+      password: 'Contraseña'
+      remember_me: 'Recuerdame?'
+      sign_in: 'Entrar'
     passwords:
       send_instructions: 'Recibirás un email con instrucciones para reiniciar tu contraseña en unos minutos.'
       updated: 'Tu contraseña fue cambiada correctamente. Has iniciado sesión.'
       updated_not_active: 'Tu contraseña fue cambiada correctamente.'
       send_paranoid_instructions: "Si tu email existe en el sistema, recibirás instrucciones para recuperar tu contraseña en él"
+      no_token: "No puedes accesar este página sin llegar desde un correo de reajustar. Si has llegado desde una página de reajsutar, por favor cerciorarse que has utilizado un URL entero."
+      edit:
+        title: 'Cambiar tu contraseña'
+        new_password: 'Nueva contraseña'
+        password_confirmation: 'Confirmar nueva contraseña'
+        change_password: 'Cambiar mi contraseña'
+      new:
+        title: '¿Has olvidado tu contraseña?'
+        email: 'Correo electrónico'
+        send_instructions: 'Enviarme instrucciones de restablecimiento de contraseña'
     confirmations:
       send_instructions: 'Recibirás instrucciones para confirmar tu cuenta en tu email en unos minutos.'
       send_paranoid_instructions: 'Si tu email existe en el sistema, recibirás instrucciones para confirmar tu cuenta en tu email en unos minutos.'
       confirmed: 'Tu cuenta fue confirmada. Has iniciado sesión.'
       resend_instructions: "Vuelva a enviar instrucciones de confirmación"
+      email: 'Correo electrónico'
+      resend_instructions_link: 'Vuelva a enviar instrucciones de confirmación'
     registrations:
       signed_up: 'Bienvenido! Te has registrado correctamente.'
       signed_up_but_unconfirmed: 'Te hemos enviado un email con instrucciones para que confirmes tu cuenta.'
@@ -41,17 +57,56 @@ es:
       updated: 'Actualizaste tu cuenta correctamente.'
       update_needs_confirmation: "Actualizaste tu cuenta correctamente, pero tenemos que revalidar tu email. Revisa tu correo para confirmar la dirección."
       destroyed: 'Adiós, tu cuenta ha sido eliminada. Esperamos verte de vuelta pronto!'
+      edit:
+        title: 'Editar'
+        email: 'Correo electrónico'
+        password: 'Contraseña'
+        password_confirmation: 'Contraseña de confirmación'
+        current_password: 'Contraseña actual'
+        update: 'Actualizar'
+        unhappy: '¿No estas feliz?'
+        cancel_account: 'Cancelar mi cuenta'
+        confirm_message: '¿Estas seguro?'
+        back: 'Atrás'
+      new:
+        title: 'Alistarse'
+        email: 'Correo electrónico'
+        password: 'Contraseña'
+        password_confirmation: 'Contraseña de confirmación'
+        sign_up: 'Alistarse'
     unlocks:
       send_instructions: 'Recibirás un email con instrucciones para desbloquear tu cuenta en unos minutos'
       unlocked: 'Tu cuenta ha sido desbloqueada. Inicia sesión para continuar.'
       send_paranoid_instructions: 'Si tu cuenta existe, recibirás instrucciones para desbloquear tu cuenta en unos minutos'
+      title: 'Reenviar instrucciones de desbloqueo'
+      email: 'Correo electrónico'
+      resend_unlock_instructions: 'Reenviar instrucciones de desbloqueo'
     omniauth_callbacks:
       success: 'Te autentificaste correctamente con tu cuenta de %{kind}.'
       failure: 'No pudimos autentificar tu cuenta de %{kind} por la siguiente razón: %{reason}.'
     mailer:
       confirmation_instructions:
         subject: 'Instrucciones de confirmación'
+        welcome: '¡Bienvenidos'
+        comfirm_account: 'Puedes confirmar tu cuenta de correo electrónico a través del siguiente enlace:'
+        confirm_link: 'Confirmar mi cuenta'
       reset_password_instructions:
         subject: 'Instrucciones de cambio de contraseña'
+        hello: '¡Hola'
+        someone_has_requested_reset: 'Alguien ha pedido un enlace para cambiar tu contraseña, y puedes hacerlo a través del siguiente enlace:.'
+        reset_password_link: 'Cambiar mi contraseña'
+        if_not_requested: 'Si no has solicitado este, por favor pasar por alto este mensaje.'
+        password_wont_change: 'Tu contraseña no cambiará hasta que accedas al enlace anterior y crear uno nuevo.'
       unlock_instructions:
         subject: 'Instrucciones de desbloqueo'
+        hello: '¡Hola'
+        account_is_account: 'Tu cuenta ha sido bloqueada debido a una excesiva cantidad intentos de entrar.'
+        click_to_unlock: 'Haz clic en el enlace de abajo para desbloquear tu cuenta:'
+        unlock_link: 'Desbloquear mi cuenta'
+    shared:
+      sign_in_link: 'Entrar'
+      sign_up_link: 'Alistarse'
+      forgotten_password_link: '¿Has olvidado tu contraseña?'
+      didnt_receive_confirmation_instructions: '¿No has recibifo instrucciones de confirmación?'
+      didnt_receive_unlock_instructions: '¿No has recibido instrucciones de desbloqueo?'
+      sign_in_with: 'Entrar con'

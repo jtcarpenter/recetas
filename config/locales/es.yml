@@ -9,6 +9,7 @@ es:
       new_user_link: "Nuevo Usuario"
       users_link: "Usuarios"
       logout_link: "Salir"
+      connected_with: "Conectado como"
   posts:
     successfully_created: "Entrada ha sido creado con éxito."
     successfully_updated: "Entrada ha sido actualizado con éxito."
@@ -17,7 +18,7 @@ es:
         zero: "0 errores"
         one: "1 error"
         other: "%{count} errores"
-      errors_message: "prohibido este entrada se guarde:"
+      errors_message: "prohibida esta entrada se guarde:"
       title: "Título"
       published: "Publicado"
       summary: "Resumen"

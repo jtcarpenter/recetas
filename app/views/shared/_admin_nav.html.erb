@@ -5,6 +5,6 @@
 <%= link_to t("shared.admin_nav.new_user_link"), new_user_path %>
 <%= link_to t("shared.admin_nav.users_link"), users_path %>
 <% end %>
-<p>Conectado como <%= current_user.email %></p>
+<p><%= t("shared.admin_nav.connected_with") %> <%= current_user.email %></p>
 <%= link_to t("shared.admin_nav.logout_link"), destroy_user_session_path, :method => :delete %>
 </nav>

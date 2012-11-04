@@ -1,25 +1,25 @@
-<h2>Editar <%= resource_name.to_s.humanize %></h2>
+<h2><%= t("devise.registrations.edit.title") %> <%= resource_name.to_s.humanize %></h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email, "Correo electrónico" %><br />
+  <div><%= f.label :email, t("devise.registrations.edit.email") %><br />
   <%= f.email_field :email %></div>
 
-  <div><%= f.label :password, "Contraseña" %> <i>(dejar en blanco si no deseas cambiarla)</i><br />
+  <div><%= f.label :password, t("devise.registrations.edit.password") %> <i>(dejar en blanco si no deseas cambiarla)</i><br />
   <%= f.password_field :password, :autocomplete => "off" %></div>
 
-  <div><%= f.label :password_confirmation, "Contraseña de confirmación" %><br />
+  <div><%= f.label :password_confirmation, t("devise.registrations.edit.password_confirmation") %><br />
   <%= f.password_field :password_confirmation %></div>
 
-  <div><%= f.label :current_password, "Contraseña actual" %> <i>(necesitamos tu contraseña actual para confirmar los cambios)</i><br />
+  <div><%= f.label :current_password, t("devise.registrations.edit.current_password") %> <i>(necesitamos tu contraseña actual para confirmar los cambios)</i><br />
   <%= f.password_field :current_password %></div>
 
-  <div><%= f.submit "Actualizar" %></div>
+  <div><%= f.submit t("devise.registrations.edit.update") %></div>
 <% end %>
 
 <h3>Cancelar mi cuenta</h3>
 
-<p>Unhappy? <%= link_to "Cancelar mi cuenta", registration_path(resource_name), :data => { :confirm => "¿Estas seguro?" }, :method => :delete %>.</p>
+<p><%= t("devise.registrations.edit.update") %> <%= link_to t("devise.registrations.edit.cancel_account"), registration_path(resource_name), :data => { :confirm => t("devise.registrations.edit.confirm_message") }, :method => :delete %>.</p>
 
-<%= link_to "Atrás", :back %>
+<%= link_to t("devise.registrations.edit.back"), :back %>

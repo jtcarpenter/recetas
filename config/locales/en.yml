@@ -11,7 +11,8 @@ en:
       drafts_link: "Drafts"
       new_user_link: "New User"
       users_link: "Users"
-      logout_link: "Logout"
+      logout_link: "Sign out"
+      connected_with: "Conected with"
   posts:
     successfully_created: "Post was successfully created."
     successfully_updated: "Post was successfully updated."
