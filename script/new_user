@@ -42,16 +42,21 @@ end
 
 attempts = 0
 maximum_attempts = 5
+min_length = 6
 password = ''
 password_confirmation = ''
-while password.empty? || password != password_confirmation
+while password.empty? || password.length < min_length || password != password_confirmation
   if password != password_confirmation
     puts 'Passwords do not match'
   end
   if password.empty? && attempts > 0
     puts 'Password cannot be empty.'
   end
+  if password.length < min_length
+    puts 'Password mush be at least six characters.'
+  end
   if attempts == maximum_attempts
+    puts 'Reached maximum number of attempts.'
     exit
   end
   puts 'Enter password'
