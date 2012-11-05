@@ -4,13 +4,11 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
-    @posts = Post.all
-    # this needs to be filtered on publish
-    # if clicked on drafts filtered on unpublished
+    @posts = Post.published
   end
 
   def drafts
-    @posts = Post.all
+    @posts = Post.unpublished
     render action: "index"
   end
 
