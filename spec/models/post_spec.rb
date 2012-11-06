@@ -10,17 +10,22 @@ describe Post do
   it "returns a posts's title as a string" do
     FactoryGirl.create(:post, title: "test title").title.should eq "test title"
   end
-  it "returns an array of published results" do
-    published1 = FactoryGirl.create(:post, title: "published1")
-    published2 = FactoryGirl.create(:post, title: "published2")
-    unpublished = FactoryGirl.create(:post, title: "unpublished", published: false)
-    Post.published.should eq [published1, published2]
-  end
-  it "returns an array of unpublished results" do
-    published1 = FactoryGirl.create(:post, title: "published1")
-    published2 = FactoryGirl.create(:post, title: "published2")
-    unpublished = FactoryGirl.create(:post, title: "unpublished", published: false)
-    Post.unpublished.should eq [unpublished]
-    Post.unpublished.should_not include published1
+  describe "filter by published" do
+    before :each do
+      @published1 = FactoryGirl.create(:post, title: "published1")
+      @published2 = FactoryGirl.create(:post, title: "published2")
+      @unpublished = FactoryGirl.create(:post, title: "unpublished", published: false)
+    end
+    context "published" do
+      it "returns an array of published results" do
+        Post.published.should eq [@published1, @published2]
+      end
+    end
+    context "unpublished" do
+      it "returns an array of unpublished results" do
+        Post.unpublished.should eq [@unpublished]
+        Post.unpublished.should_not include @published1
+      end
+    end
   end
 end
