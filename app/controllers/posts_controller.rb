@@ -14,6 +14,9 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find(params[:id])
+    if !user_signed_in? && !@post.published
+      redirect_to '/users/sign_in'
+    end
   end
 
   def new
@@ -36,7 +39,6 @@ class PostsController < ApplicationController
   def update
     @post = Post.find(params[:id])
     if @post.update_attributes(params[:post])
-      # and validated
       redirect_to @post, notice: t("posts.successfully_updated")
     else
       render action: "edit"
