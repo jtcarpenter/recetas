@@ -1,6 +1,5 @@
 class UsersController < ApplicationController
 
-  http_basic_authenticate_with :name => "jason", :password => "B1gD4y"
   before_filter :authenticate_user!
 
   def index
