@@ -7,25 +7,36 @@ class UsersController < ApplicationController
   end
 
   def new
+    if !current_user.admin?
+      redirect_to root_url
+    end
     @user = User.new
   end
 
   def create
-    @user = User.new(params[:user])
-    if @user.save
-      flash[:notice] = "#{ @user.email } #{ t('users.created') }."
-      redirect_to users_path
+    if !current_user.admin?
+      redirect_to root_url
     else
-      render :action => 'new'
+      @user = User.new(params[:user])
+      if @user.save
+        flash[:notice] = "#{ @user.email } #{ t('users.created') }."
+        redirect_to User.last
+      else
+        render :action => 'new'
+      end
     end
   end
 
   def destroy
-    @user = User.find(params[:id])
-    if @user == current_user
-      sign_out @user
+    if !current_user.admin?
+      redirect_to root_url
+    else
+      @user = User.find(params[:id])
+      if @user == current_user
+        sign_out @user
+      end
+      @user.destroy
+      redirect_to users_path
     end
-    @user.destroy
-    redirect_to users_path
   end
 end

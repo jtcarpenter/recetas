@@ -2,11 +2,13 @@ require 'spec_helper'
 
 describe PostsController do
   describe "guest access" do
+    before do
+      @post = create(:post)
+    end
     describe 'GET #index' do
       it "populates an array of posts" do
-        post = create(:post)
         get :index
-        assigns(:posts).should eq [post]
+        assigns(:posts).should eq [@post]
       end
       it "renders the :index view" do
         get :index
@@ -15,17 +17,18 @@ describe PostsController do
     end
     describe 'GET #show' do
       it "assigns the requested post to @post" do
-        post = create(:post)
-        get :show, id: post
-        assigns(:post).should eq post
+        get :show, id: @post
+        assigns(:post).should eq @post
       end
       it "renders the :show template" do
-        post = create(:post)
-        get :show, id: post
+        get :show, id: @post
         response.should render_template :show
       end
-      it "assigns the requested draft post to @post if signed in"
-      it "redirects when trying to access draft post while not signed in"
+      it "redirects when trying to access draft post while not signed in" do
+        draft = create(:post, published: false)
+        get :show, id: draft
+        response.should redirect_to(new_user_session_path)
+      end
     end
     describe 'GET #drafts' do
       it "requires sign in" do
@@ -66,45 +69,119 @@ describe PostsController do
   end
 
   describe "signed in access" do
+    before :each do
+      @post = create(:post)
+      @user = create(:user)
+      sign_in :user, @user
+    end
     describe 'GET #drafts' do
-      it "populates an array of draft posts if singed in"
-      it "renders the :index template"
+      it "populates an array of draft posts if singed in" do
+        draft_post = create(:post, published: false)
+        get :drafts
+        assigns(:posts).should eq [draft_post]
+      end
+      it "renders the :index template" do
+        get :drafts
+        response.should render_template :index
+      end
+    end
+    describe 'GET #show' do
+      it "assigns the requested draft post to draft" do
+        draft = create(:post, published: false)
+        get :show, id: draft
+        assigns(:post).should eq draft
+      end
+      it "renders the :show template" do
+        draft = create(:post, published: false)
+        get :show, id: draft
+        response.should render_template :show
+      end
     end
     describe 'GET #new' do
-      it "assigns a new post to @post"
-      it "renders the :new template"
+      it "assigns a new post to @post" do
+        get :new
+        assigns(:post).should be_a_new(Post)
+      end
+      it "renders the :new template" do
+        get :new
+        response.should render_template :new
+      end
     end
     describe 'GET #edit' do
-      it "assigns the requested post to @post"
-      it "renders the :edit template"
+      it "assigns the requested post to @post" do
+        get :edit, id: @post
+        assigns(:post).should eq @post
+      end
+      it "renders the :edit template" do
+        get :edit, id: @post
+        response.should render_template :edit
+      end
     end
     describe 'POST #create' do
       context "with valid attributes" do
-        it "saves the new post in the database"
-        it "redirects to the home page"
+        it "creates a new contact" do
+          expect {
+            post :create, post: attributes_for(:post)
+          }.to change(Post,:count).by(1)
+        end
+        it "redirects to the home page" do
+          post :create, post: attributes_for(:post)
+          response.should redirect_to Post.last
+        end
       end
       context "with invalid attributes" do
-        it "does not save the new post in the database"
-        it "re-renders the :new template"
+        it "does not save the new post" do
+          expect {
+            post :create, post: attributes_for(:invalid_post)
+          }.to_not change(Post, :count)
+        end
+        it "re-renders the :new template" do
+          post :create, post: attributes_for(:invalid_post)
+          response.should render_template :new
+        end
       end
     end
     describe 'PUT #update' do
       before :each do
         @post = create(:post, title: "update test")
       end
-      it "locates the requested @post"
       context "with valid attributes" do
-        it "changes @post's attributes"
-        it "redirects to the updated post"
+        it "located the requested @post" do
+          put :update, id: @post, post: attributes_for(:post)
+          assigns(:post).should eq(@post)
+        end
+        it "changes @post's attributes" do
+          put :update, id: @post, post: attributes_for(:post, title: "title")
+          @post.reload
+          @post.title.should eq("title")
+        end
+        it "redirects to the updated post" do
+          put :update, id: @post, post: attributes_for(:post)
+          response.should redirect_to :post
+        end
       end
       context "with invalid attributes" do
-        it "does not change @post's attributes"
-        it "re-renders the edit method"
+        it "does not change @post's attributes" do
+          put :update, id: @post, post: attributes_for(:post, title: nil)
+          @post.reload
+          @post.title.should eq("update test")
+        end
+        it "re-renders the edit method" do
+          put :update, id: @post, post: attributes_for(:invalid_post)
+          response.should render_template :edit
+        end
       end
     end
     describe 'DELETE #destroy' do
-      it "deletes the post from the database"
-      it "redirects to the homepage"
+      it "deletes the post from the database" do
+        expect {
+          delete :destroy, id: @post
+        }.to change(Post,:count).by(-1)
+      end
+      it "redirects to the posts#index" do
+        delete :destroy, id: @post
+        response.should redirect_to posts_url
+      end
     end
   end
 end
