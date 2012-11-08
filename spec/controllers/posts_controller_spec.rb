@@ -28,22 +28,40 @@ describe PostsController do
       it "redirects when trying to access draft post while not signed in"
     end
     describe 'GET #drafts' do
-      it "requires sign in"
+      it "requires sign in" do
+        get :drafts
+        response.should redirect_to(new_user_session_path)
+      end
     end
     describe 'GET #new' do
-      it "requires sign in"
+      it "requires sign in" do
+        get :new
+        response.should redirect_to(new_user_session_path)
+      end
     end
     describe 'GET #edit' do
-      it "requires sign in"
+      it "requires sign in" do
+        get :edit, id:  create(:post)
+        response.should redirect_to(new_user_session_path)
+      end
     end
     describe 'POST #create' do
-      it "requires sign in"
+      it "requires sign in" do
+        post :create, id: create(:post), post: attributes_for(:post)
+        response.should redirect_to(new_user_session_path)
+      end
     end
     describe 'PUT #update' do
-      it "requires sign in"
+      it "requires sign in" do
+        put :update, id: create(:post), post: attributes_for(:post)
+        response.should redirect_to(new_user_session_path)
+      end
     end
     describe 'DELETE #destroy' do
-      it "requires sign in"
+      it "requires sign in" do
+        delete :destroy, id: create(:post)
+        response.should redirect_to(new_user_session_path)
+      end
     end
   end
 
