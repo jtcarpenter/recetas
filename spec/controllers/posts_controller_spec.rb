@@ -1,10 +1,8 @@
 require 'spec_helper'
 
 describe PostsController do
-  describe "guest access" do
-    before do
-      @post = create(:post)
-    end
+
+  shared_examples("public access to posts") do
     describe 'GET #index' do
       it "populates an array of posts" do
         get :index
@@ -15,65 +13,9 @@ describe PostsController do
         response.should render_template :index
       end
     end
-    describe 'GET #show' do
-      it "assigns the requested post to @post" do
-        get :show, id: @post
-        assigns(:post).should eq @post
-      end
-      it "renders the :show template" do
-        get :show, id: @post
-        response.should render_template :show
-      end
-      it "redirects when trying to access draft post while not signed in" do
-        draft = create(:post, published: false)
-        get :show, id: draft
-        response.should redirect_to(new_user_session_path)
-      end
-    end
-    describe 'GET #drafts' do
-      it "requires sign in" do
-        get :drafts
-        response.should redirect_to(new_user_session_path)
-      end
-    end
-    describe 'GET #new' do
-      it "requires sign in" do
-        get :new
-        response.should redirect_to(new_user_session_path)
-      end
-    end
-    describe 'GET #edit' do
-      it "requires sign in" do
-        get :edit, id:  create(:post)
-        response.should redirect_to(new_user_session_path)
-      end
-    end
-    describe 'POST #create' do
-      it "requires sign in" do
-        post :create, id: create(:post), post: attributes_for(:post)
-        response.should redirect_to(new_user_session_path)
-      end
-    end
-    describe 'PUT #update' do
-      it "requires sign in" do
-        put :update, id: create(:post), post: attributes_for(:post)
-        response.should redirect_to(new_user_session_path)
-      end
-    end
-    describe 'DELETE #destroy' do
-      it "requires sign in" do
-        delete :destroy, id: create(:post)
-        response.should redirect_to(new_user_session_path)
-      end
-    end
   end
 
-  describe "signed in access" do
-    before :each do
-      @post = create(:post)
-      @user = create(:user)
-      sign_in :user, @user
-    end
+  shared_examples("signed in access to posts") do
     describe 'GET #drafts' do
       it "populates an array of draft posts if singed in" do
         draft_post = create(:post, published: false)
@@ -183,5 +125,73 @@ describe PostsController do
         response.should redirect_to posts_url
       end
     end
+  end
+
+  describe "guest access" do
+    before do
+      @post = create(:post)
+    end
+    it_behaves_like "public access to posts"
+    describe 'GET #show' do
+      it "assigns the requested post to @post" do
+        get :show, id: @post
+        assigns(:post).should eq @post
+      end
+      it "renders the :show template" do
+        get :show, id: @post
+        response.should render_template :show
+      end
+      it "redirects when trying to access draft post while not signed in" do
+        draft = create(:post, published: false)
+        get :show, id: draft
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    describe 'GET #drafts' do
+      it "requires sign in" do
+        get :drafts
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    describe 'GET #new' do
+      it "requires sign in" do
+        get :new
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    describe 'GET #edit' do
+      it "requires sign in" do
+        get :edit, id:  create(:post)
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    describe 'POST #create' do
+      it "requires sign in" do
+        post :create, id: create(:post), post: attributes_for(:post)
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    describe 'PUT #update' do
+      it "requires sign in" do
+        put :update, id: create(:post), post: attributes_for(:post)
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    describe 'DELETE #destroy' do
+      it "requires sign in" do
+        delete :destroy, id: create(:post)
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+  end
+
+  describe "signed in access" do
+    before :each do
+      @post = create(:post)
+      @user = create(:user)
+      sign_in :user, @user
+    end
+    it_behaves_like "public access to posts"
+    it_behaves_like "signed in access to posts"
   end
 end

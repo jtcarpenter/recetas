@@ -1,6 +1,15 @@
 require 'spec_helper'
 
 describe UsersController do
+
+  shared_examples("signed in access to users") do
+    # TODO:
+  end
+
+  shared_examples("admin access to users") do
+    # TODO:
+  end
+
   describe "guest access" do
     describe 'GET #index' do
       it "requires sign in" do
