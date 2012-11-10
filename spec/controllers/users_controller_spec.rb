@@ -3,81 +3,6 @@ require 'spec_helper'
 describe UsersController do
 
   shared_examples("signed in access to users") do
-    # TODO:
-  end
-
-  shared_examples("admin access to users") do
-    # TODO:
-  end
-
-  describe "guest access" do
-    describe 'GET #index' do
-      it "requires sign in" do
-        get :index
-        response.should redirect_to(new_user_session_path)
-      end
-    end
-    describe 'GET #new' do
-      it "requires sign in" do
-        get :new
-        response.should redirect_to(new_user_session_path)
-      end
-    end
-    describe 'POST #create' do
-      it "requires sign in" do
-        post :create, id: create(:user), user: attributes_for(:user)
-        response.should redirect_to(new_user_session_path)
-      end
-    end
-    describe 'DELETE #destroy' do
-      it "requires sign in" do
-        delete :destroy, id: create(:user)
-        response.should redirect_to(new_user_session_path)
-      end
-    end
-  end
-
-  describe "signed in access" do
-    before :each do
-      @user = create(:user)
-      sign_in :user, @user
-    end
-    describe 'GET #index' do
-      it "populates an array of users" do
-        get :index
-        assigns(:users).should eq [@user]
-      end
-      it "renders the :index view" do
-        get :index
-        response.should render_template :index
-      end
-    end
-    describe 'GET #new' do
-      it "requires admin access" do
-        get :new
-        response.should redirect_to root_url
-      end
-    end
-    describe 'POST #create' do
-      it "requires admin access" do
-        post :create, id: create(:user), user: attributes_for(:user)
-        response.should redirect_to root_url
-      end
-    end
-    describe 'DELETE #destroy' do
-      it "requires admin access" do
-        delete :destroy, id: create(:user)
-        response.should redirect_to root_url
-      end
-    end
-  end
-
-  describe "admin access" do
-    before do
-      @user = create(:user)
-      @admin = create(:admin)
-      sign_in :user, @admin
-    end
     describe 'GET #index' do
       it "populates an array of users" do
         get :index
@@ -88,6 +13,9 @@ describe UsersController do
         response.should render_template :index
       end
     end
+  end
+
+  shared_examples("admin access to users") do
     describe 'GET #new' do
       it "assigns a new user to @user" do
         get :new
@@ -133,5 +61,69 @@ describe UsersController do
         response.should redirect_to users_url
       end
     end
+  end
+
+  describe "guest access" do
+    describe 'GET #index' do
+      it "requires sign in" do
+        get :index
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    describe 'GET #new' do
+      it "requires sign in" do
+        get :new
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    describe 'POST #create' do
+      it "requires sign in" do
+        post :create, id: create(:user), user: attributes_for(:user)
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+    describe 'DELETE #destroy' do
+      it "requires sign in" do
+        delete :destroy, id: create(:user)
+        response.should redirect_to(new_user_session_path)
+      end
+    end
+  end
+
+  describe "signed in access" do
+    before :each do
+      @user = create(:user)
+      @admin = create(:admin)
+      sign_in :user, @user
+    end
+    it_behaves_like "signed in access to users"
+    describe 'GET #new' do
+      it "requires admin access" do
+        get :new
+        response.should redirect_to root_url
+      end
+    end
+    describe 'POST #create' do
+      it "requires admin access" do
+        post :create, id: create(:user), user: attributes_for(:user)
+        response.should redirect_to root_url
+      end
+    end
+    describe 'DELETE #destroy' do
+      it "requires admin access" do
+        delete :destroy, id: create(:user)
+        response.should redirect_to root_url
+      end
+    end
+  end
+
+  describe "admin access" do
+    before do
+      @user = create(:user)
+      @admin = create(:admin)
+      sign_in :user, @admin
+    end
+    it_behaves_like "signed in access to users"
+    it_behaves_like "admin access to users"
   end
 end
