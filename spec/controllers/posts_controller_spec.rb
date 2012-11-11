@@ -162,7 +162,7 @@ describe PostsController do
     describe 'GET #edit' do
       it "requires sign in" do
         get :edit, id:  create(:post)
-        response.should redirect_to(new_user_session_path)
+        response.should require_login
       end
     end
     describe 'POST #create' do
