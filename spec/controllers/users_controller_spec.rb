@@ -67,25 +67,25 @@ describe UsersController do
     describe 'GET #index' do
       it "requires sign in" do
         get :index
-        response.should redirect_to(new_user_session_path)
+        response.should require_login
       end
     end
     describe 'GET #new' do
       it "requires sign in" do
         get :new
-        response.should redirect_to(new_user_session_path)
+        response.should require_login
       end
     end
     describe 'POST #create' do
       it "requires sign in" do
         post :create, id: create(:user), user: attributes_for(:user)
-        response.should redirect_to(new_user_session_path)
+        response.should require_login
       end
     end
     describe 'DELETE #destroy' do
       it "requires sign in" do
         delete :destroy, id: create(:user)
-        response.should redirect_to(new_user_session_path)
+        response.should require_login
       end
     end
   end

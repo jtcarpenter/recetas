@@ -144,19 +144,19 @@ describe PostsController do
       it "redirects when trying to access draft post while not signed in" do
         draft = create(:post, published: false)
         get :show, id: draft
-        response.should redirect_to(new_user_session_path)
+        response.should require_login
       end
     end
     describe 'GET #drafts' do
       it "requires sign in" do
         get :drafts
-        response.should redirect_to(new_user_session_path)
+        response.should require_login
       end
     end
     describe 'GET #new' do
       it "requires sign in" do
         get :new
-        response.should redirect_to(new_user_session_path)
+        response.should require_login
       end
     end
     describe 'GET #edit' do
@@ -168,19 +168,19 @@ describe PostsController do
     describe 'POST #create' do
       it "requires sign in" do
         post :create, id: create(:post), post: attributes_for(:post)
-        response.should redirect_to(new_user_session_path)
+        response.should require_login
       end
     end
     describe 'PUT #update' do
       it "requires sign in" do
         put :update, id: create(:post), post: attributes_for(:post)
-        response.should redirect_to(new_user_session_path)
+        response.should require_login
       end
     end
     describe 'DELETE #destroy' do
       it "requires sign in" do
         delete :destroy, id: create(:post)
-        response.should redirect_to(new_user_session_path)
+        response.should require_login
       end
     end
   end
