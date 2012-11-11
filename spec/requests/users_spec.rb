@@ -2,10 +2,7 @@ describe 'user management' do
   it "adds a new user" do
     admin = create(:admin)
 
-    visit new_user_session_path
-    fill_in 'user[email]', with: admin.email
-    fill_in 'user[password]', with: admin.password
-    click_button 'sign_in'
+    sign_in admin
 
     expect {
       click_link 'new_user_link'
