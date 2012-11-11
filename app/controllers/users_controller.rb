@@ -20,7 +20,7 @@ class UsersController < ApplicationController
       @user = User.new(params[:user])
       if @user.save
         flash[:notice] = "#{ @user.email } #{ t('users.created') }."
-        redirect_to User.last
+        redirect_to users_path
       else
         render :action => 'new'
       end

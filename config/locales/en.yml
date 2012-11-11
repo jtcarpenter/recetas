@@ -70,6 +70,8 @@ en:
               too_short: "Password must be at least six characters"
               confirmation: "Passwords don't match"
               blank: "Password cannot be blank"
+            email:
+              taken: "Email already taken"
         post:
           attributes:
             title:

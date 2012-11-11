@@ -35,7 +35,7 @@ describe UsersController do
         end
         it "redirects to the users page" do
           post :create, user: attributes_for(:user)
-          response.should redirect_to User.last
+          response.should redirect_to users_path
         end
       end
       context "with invalid attributes" do

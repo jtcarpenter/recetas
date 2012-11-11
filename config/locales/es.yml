@@ -67,6 +67,8 @@ es:
               too_short: "Contraseña tiene que tener al menos seis caracteres"
               confirmation: "Contraseñas no coinciden"
               blank: "Contraseña no puede estar en blanco"
+            email:
+              taken: "Correo ya esta cogido"
         post:
           attributes:
             title:
