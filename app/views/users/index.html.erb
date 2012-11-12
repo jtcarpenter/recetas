@@ -2,12 +2,12 @@
 
 <ol>
 <% @users.each do |user| %>
-  <li>
+  <li id="<%= "user_#{user.id}" %>">
     <h2><%= user.email %></h2>
     <p><%= user.updated_at %></p>
     <% if current_user.try(:admin?) %>
       <% if true || current_user.access == 'super' %> 
-      <%= link_to t("users.index.destroy"), user, method: :delete, data: { confirm: t("users.index.destroy_warning") } %>
+      <%= link_to t("users.index.destroy"), user, method: :delete, data: { confirm: t("users.index.destroy_warning") }, id: "destroy" %>
       <% end %>
     <% end %>
   </li>
