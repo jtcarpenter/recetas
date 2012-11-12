@@ -16,13 +16,15 @@ describe 'user management' do
     # Saves last page and opens in browser, for debugging
     # save_and_open_page
   end
-  it "deletes a user" do
+  it "deletes a user", js: true do
     user = create(:user, email:"temp@example.com", password: "password", password_confirmation: "password")
     visit users_path
     expect {
       within "#user_#{user.id}" do
         click_link "destroy"
       end
+      alert = page.driver.browser.switch_to.alert
+      alert.accept
     }.to change(User, :count).by(-1)
     page.should_not have_content "temp@example.com"
   end
