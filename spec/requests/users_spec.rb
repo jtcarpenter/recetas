@@ -1,7 +1,7 @@
 describe 'user management' do
   before :each do
-    admin = create(:admin)
-    sign_in admin
+    @admin = create(:admin)
+    sign_in @admin
   end
   it "adds a new user" do
     expect {
@@ -31,5 +31,19 @@ describe 'user management' do
       #alert.accept
     }.to change(User, :count).by(-1)
     page.should_not have_content "temp@example.com"
+  end
+
+  it "sends a forgottem password link" do
+    sign_out @admin
+    # might have to create new user with specific email
+    visit new_user_session_path
+    click_link "forgotten_password"
+    fill_in 'user[email]', with: @admin.email
+    click_button 'send'
+    #open_last_email.should be_delivered_from sender.email
+    #open_last_email.should have_reply_to sender.email
+    open_last_email.should be_delivered_to @admin.email
+    #open_last_email.should have_subject message.subject
+    #open_last_email.should have_body_text message.message
   end
 end

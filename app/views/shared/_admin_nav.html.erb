@@ -6,5 +6,5 @@
 <%= link_to t("shared.admin_nav.users_link"), users_path, :id => 'users_link' %>
 <% end %>
 <p><%= t("shared.admin_nav.connected_with") %> <%= current_user.email %></p>
-<%= link_to t("shared.admin_nav.logout_link"), destroy_user_session_path, :id => 'delete_link', :method => :delete %>
+<%= link_to t("shared.admin_nav.logout_link"), destroy_user_session_path, :id => 'sign_out', :method => :delete %>
 </nav>

@@ -6,7 +6,7 @@
   <div><%= f.label :email, t("devise.passwords.new.email") %><br />
   <%= f.email_field :email %></div>
 
-  <div><%= f.submit t("devise.passwords.new.send_instructions") %></div>
+  <div><%= f.submit t("devise.passwords.new.send_instructions"), :id => 'send' %></div>
 <% end %>
 
 <%= render "devise/shared/links" %>

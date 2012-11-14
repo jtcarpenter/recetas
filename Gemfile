@@ -19,6 +19,7 @@ group :test do
   gem 'database_cleaner', '~> 0.7.2'
   gem 'launchy', '~> 2.1.0'
   gem 'shoulda', '~> 3.3.2'
+  gem "email_spec", "~> 1.4.0"
 end
 
 gem 'rails', '3.2.8'
