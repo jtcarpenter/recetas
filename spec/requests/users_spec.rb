@@ -41,9 +41,8 @@ describe 'user management' do
     fill_in 'user[email]', with: @admin.email
     click_button 'send'
     #open_last_email.should be_delivered_from sender.email
-    #open_last_email.should have_reply_to sender.email
+    #open_last_email.should be_delivered_from ActionMailer::Base.smtp_settings.user_name
     open_last_email.should be_delivered_to @admin.email
-    #open_last_email.should have_subject message.subject
-    #open_last_email.should have_body_text message.message
+    open_last_email.should have_subject I18n.t("devise.mailer.reset_password_instructions.subject")
   end
 end
