@@ -12,10 +12,5 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require moderniser
-// require underscore
-// require backbone
-// require_tree ./models
-// require_tree ./collections
-// require_tree ./views
+//= require html5shiv
 //= require_tree .

@@ -7,23 +7,38 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+<div class="container-fluid">
 
-<% if user_signed_in? %>
-<%= render 'shared/admin_nav' %>
-<% end %>
+  <% if user_signed_in? %>
+  <%= render 'shared/admin_nav' %>
+  <% end %>
 
-<header>
-  <h1><%= t("layouts.application.title") %></h1>
-</header>
-<section class="main">
+  <header class="row-fluid">
+    <%= render 'shared/header' %>
+  </header>
 
-<p class="notice"><%= notice %></p>
-<p class="alert"><%= alert %></p>
+  <section class="row-fluid">
+    <section class="span9 main">
 
-<%= yield %>
+      <% if(notice) %>
+        <p class="notice"><%= notice %></p>
+      <% end %>
+      <% if(alert) %>
+        <p class="alert"><%= alert %></p>
+      <% end %>
 
+      <%= yield %>
+
+    </section>
+
+    <aside class="span3 sidebar">
+      <%= render 'shared/sidebar' %>
+    </aside>
+  </section>
+
+  <footer class="span12">
+    <%= render 'shared/footer' %>
+  </footer>
 </div>
-<footer>
-</footer>
 </body>
 </html>
