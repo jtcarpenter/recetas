@@ -3,7 +3,7 @@ describe 'user management' do
   #-------------------------------
   # Set to true run selenium tests
   #-------------------------------
-  selenium = true;
+  selenium = false;
 
   before :each do
     @selenium = selenium ? true : false
