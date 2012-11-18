@@ -6,9 +6,11 @@
     <h2><%= link_to post.title, post %></h2>
     <p><%= post.updated_at %></p>
     <% if user_signed_in? %>
+    <span class="icon-pencil"></span>
     <small>
       <%= link_to t("posts.index.edit_link"), edit_post_path(post) %>
     </small>
+    <span class="icon-remove"></span>
     <small>
       <%= link_to t("posts.index.destroy_link"), post, method: :delete, data: { confirm: t("posts.index.destroy_warning") } %>
     </small>

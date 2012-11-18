@@ -7,6 +7,7 @@
     <p><%= user.updated_at %></p>
     <% if current_user.try(:admin?) %>
       <% if true || current_user.access == 'super' %> 
+      <span class="icon-remove"></span>
       <small>
         <%= link_to t("users.index.destroy"), user, method: :delete, data: { confirm: t("users.index.destroy_warning") }, id: "destroy" %>
       </small>

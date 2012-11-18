@@ -2,4 +2,18 @@
 @import "colors";
 @import "bootstrap-override";
 
+body {
+  background: $cream;
+}
 
+h1, h2, h3, h4, h5, h6 {
+  color: $green;
+}
+
+p {
+  color: $gray;
+}
+
+a {
+  color: $purple;
+}
