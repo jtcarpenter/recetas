@@ -22,6 +22,8 @@ en:
     sidebar:
   categories:
     title: "Categories"
+  tags:
+    title: "Tags"
   posts:
     successfully_created: "Post was successfully created."
     successfully_updated: "Post was successfully updated."

@@ -19,6 +19,8 @@ es:
     sidebar:
   categories:
     title: "Categorías"
+  tags:
+    title: "Etiquetas"
   posts:
     successfully_created: "Entrada ha sido creado con éxito."
     successfully_updated: "Entrada ha sido actualizado con éxito."
