@@ -66,6 +66,9 @@ en:
       title: "Nuevo Usuario"
       cancel: "Cancelar"
   activerecord:
+    attributes:
+      user:
+        password: ""
     errors:
       models:
         user:
