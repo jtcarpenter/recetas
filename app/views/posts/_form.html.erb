@@ -23,8 +23,13 @@
     <%= f.text_area :summary %>
   </div>
   <div class="field">
-    <%= f.label :image, t("posts.form.image") %><br />
+    <%= image_tag(@post.image_url(:thumb)) if @post.image? %><br />
     <%= f.file_field :image %>
+    <%= f.hidden_field :image_cache %>
+  </div>
+  <div class="field">
+    <%= f.check_box :remove_image %>
+    <%= f.label :remove_image, t("posts.form.remove_image") %><br />
   </div>
   <div class="actions">
     <%= f.submit t("posts.form.create"), :class => 'btn' %>

@@ -13,6 +13,9 @@ en:
       users_link: "Users"
       logout_link: "Sign out"
       connected_with: "Conected with"
+    sidebar:
+  categories:
+    title: "Categories"
   posts:
     successfully_created: "Post was successfully created."
     successfully_updated: "Post was successfully updated."
@@ -27,6 +30,7 @@ en:
       summary: "Summary"
       image: "Image"
       create: "Save"
+      remove_image: "Remove Image"
     edit:
       title: "Edit Post"
       cancel: "Cancel"

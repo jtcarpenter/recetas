@@ -10,6 +10,9 @@ es:
       users_link: "Usuarios"
       logout_link: "Salir"
       connected_with: "Conectado como"
+    sidebar:
+  categories:
+    title: "Categorías"
   posts:
     successfully_created: "Entrada ha sido creado con éxito."
     successfully_updated: "Entrada ha sido actualizado con éxito."
@@ -24,6 +27,7 @@ es:
       summary: "Resumen"
       image: "Imagen"
       create: "Guardar"
+      remove_image: "Quitar imagen"
     edit:
       title: "Editar Entrada"
       cancel: "Cancelar"

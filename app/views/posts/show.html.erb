@@ -4,14 +4,14 @@
 <p id="notice"><%= notice %></p>
 <% end %>
 
-<% if @post.summary %>
+<% if @post.summary.to_s != "" %>
 <p>
   <%= @post.summary %>
 </p>
 <% end %>
 
 <% if @post.image.to_s != "" %>
-  <%= image_tag @post.image_url(:thumb).to_s %>
+  <%= image_tag @post.image_url(:show).to_s %>
 <% end %>
 
 <% if user_signed_in? %>
