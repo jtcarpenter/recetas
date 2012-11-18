@@ -10,10 +10,8 @@
 </p>
 <% end %>
 
-<% if @post.image %>
-<p>
-  <%= @post.image %>
-</p>
+<% if @post.image.to_s != "" %>
+  <%= image_tag @post.image_url(:thumb).to_s %>
 <% end %>
 
 <% if user_signed_in? %>
