@@ -3,11 +3,12 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
-    @posts = Post.published
+    @posts = Post.where("published = ?", true).order("updated_at DESC").page(params[:page]).per(2)
+    render action: "index"
   end
 
   def drafts
-    @posts = Post.unpublished
+    @posts = Post.where("published = ?", false).order("updated_at DESC").page(params[:page]).per(2)
     render action: "index"
   end
 

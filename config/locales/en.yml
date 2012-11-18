@@ -5,6 +5,12 @@ en:
   layouts:
     application:
       title: "Marta's Recipes"
+  views:
+    pagination:
+      previous: "&lt;"
+      next: "&gt;"
+      first: "&lt;&lt;"
+      last: "&gt;&gt;"
   shared:
     admin_nav:
       new_post_link: "New Post"
