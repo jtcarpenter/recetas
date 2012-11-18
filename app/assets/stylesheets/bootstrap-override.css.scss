@@ -1,0 +1,10 @@
+body {
+  font-family: $cambria;
+}
+
+.navbar-inner {
+  border-top:0;
+  -webkit-border-radius: 0 0 4px 4px;
+  -moz-border-radius: 0 0 4px 4px;
+  border-radius: 0 0 4px 4px;
+}

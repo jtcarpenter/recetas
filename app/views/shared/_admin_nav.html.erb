@@ -1,28 +1,33 @@
 <nav class="navbar">
-  <!-- TODO: remove top border and top border radi -->
   <div class="navbar-inner">
+    <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+    </a>
     <span class="brand">
-      <%= t("shared.admin_nav.connected_with") %> <%= current_user.email %>
+      <%= current_user.email %>
     </span>
-    <ul class="nav">
-      <li>
-        <%= link_to t("shared.admin_nav.logout_link"), destroy_user_session_path, :id => 'sign_out', :method => :delete %>
-      </li>
-      <!-- TODO: active state -->
-      <li class="active">
-        <%= link_to t("shared.admin_nav.new_post_link"), new_post_path, :id => 'new_post_link' %>
-      </li>
-      <li>
-        <%= link_to t("shared.admin_nav.drafts_link"), '/posts/drafts', :id => 'drafts_link' %>
-      </li>
-      <% if current_user.try(:admin?) %>
+    <div class="nav-collapse">
+      <ul class="nav">
         <li>
-          <%= link_to t("shared.admin_nav.new_user_link"), new_user_path, :id => 'new_user_link' %>
+          <%= link_to t("shared.admin_nav.logout_link"), destroy_user_session_path, :id => 'sign_out', :method => :delete %>
         </li>
-        <li>
-          <%= link_to t("shared.admin_nav.users_link"), users_path, :id => 'users_link' %>
+        <li <% if(current_page?(:controller => 'posts', :action => 'new')) %>class="active"<% end %>>
+          <%= link_to t("shared.admin_nav.new_post_link"), new_post_path, :id => 'new_post_link' %>
         </li>
-      <% end %>
-    </ul>
-</div>
+        <li <% if(current_page?(:controller => 'posts', :action => 'drafts')) %>class="active"<% end %>>
+          <%= link_to t("shared.admin_nav.drafts_link"), '/posts/drafts', :id => 'drafts_link' %>
+        </li>
+        <% if current_user.try(:admin?) %>
+          <li <% if(current_page?(:controller => 'users', :action => 'new')) %>class="active"<% end %>>
+            <%= link_to t("shared.admin_nav.new_user_link"), new_user_path, :id => 'new_user_link' %>
+          </li>
+          <li <% if(current_page?(:controller => 'users', :action => 'index')) %>class="active"<% end %>>
+            <%= link_to t("shared.admin_nav.users_link"), users_path, :id => 'users_link' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
 </nav>
