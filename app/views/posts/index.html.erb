@@ -5,6 +5,10 @@
   <li>
     <h2><%= link_to post.title, post %></h2>
     <p><%= post.updated_at %></p>
+    <p>
+      <%= t("posts.tags.name") %>: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
+    </p>
+
     <% if user_signed_in? %>
     <span class="icon-pencil"></span>
     <small>

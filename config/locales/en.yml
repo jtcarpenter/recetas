@@ -39,6 +39,7 @@ en:
       image: "Image"
       create: "Save"
       remove_image: "Remove Image"
+      tag_list: "Tags (seperated by commas)"
     edit:
       title: "Edit Post"
       cancel: "Cancel"
@@ -53,6 +54,8 @@ en:
       cancel: "Cancel"
     show:
       edit_post_link: "Edit"
+    tags:
+      name: "Tags"
   users:
     created: "created"
     form:

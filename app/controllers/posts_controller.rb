@@ -3,7 +3,15 @@ class PostsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
 
   def index
-    @posts = Post.where("published = ?", true).order("updated_at DESC").page(params[:page]).per(2)
+    args = ["published = ?", true]
+    if params[:tag]
+      if user_signed_in?
+        args = []
+      end
+      @posts = Post.where(args).tagged_with(params[:tag]).order("updated_at DESC").page(params[:page]).per(2)
+    else
+      @posts = Post.where(args).order("updated_at DESC").page(params[:page]).per(2)
+    end
     render action: "index"
   end
 
@@ -47,7 +55,7 @@ class PostsController < ApplicationController
 
   def destroy
     @post = Post.find(params[:id])
-    @post.destroy
+    @post.destroy #TODO: causing spec to fail
     redirect_to posts_url
   end
 end
