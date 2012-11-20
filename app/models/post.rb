@@ -3,6 +3,7 @@ class Post < ActiveRecord::Base
   mount_uploader :image, ImageUploader
   validates :title, :presence => true
   acts_as_taggable
+  has_many  :comments, :dependent => :destroy
 
   def self.published
     where("published = ?", true)

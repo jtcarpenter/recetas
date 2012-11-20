@@ -3,7 +3,9 @@ Recetas::Application.routes.draw do
   resources :users
 
   match "posts/drafts" => "posts#drafts"
-  resources :posts
+  resources :posts do
+    resources :comments
+  end
   get 'tags/:tag', to: 'posts#index', as: :tag
   # The priority is based upon order of creation:
   # first created -> highest priority.
