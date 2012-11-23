@@ -5,14 +5,14 @@ group :production do
 end
 
 group :development do
-  gem 'mysql2'
+  gem 'sqlite3'
   gem 'rspec-rails', '~> 2.10.1'
   gem 'factory_girl_rails', '~> 3.2.0'
   gem 'guard-rspec', '~> 0.7.0'
 end
 
 group :test do
-  gem 'mysql2'
+  gem 'sqlite3'
   gem 'factory_girl_rails', '~> 3.2.0'
   gem 'faker', '~> 1.0.1'
   gem 'capybara', '~> 1.1.2'
