@@ -12,7 +12,7 @@ development:
   adapter: sqlite3
   encoding: utf8
   reconnect: false
-  database: recetas_development
+  database: db/recetas_development.sqlite3
   pool: 5
   username: root
   password:
@@ -25,7 +25,7 @@ test:
   adapter: sqlite3
   encoding: utf8
   reconnect: false
-  database: recetas_test
+  database: db/recetas_test.sqlite3
   pool: 5
   username: root
   password:
