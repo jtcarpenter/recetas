@@ -15,6 +15,7 @@ describe 'user management' do
     expect {
       click_link 'new_user_link'
       fill_in 'user[email]', with: 'mail@example.com'
+      fill_in 'user[name]', with: 'name'
       fill_in 'user[password]', with: 'password'
       fill_in 'user[password_confirmation]', with: 'password'
       click_button 'create_user'

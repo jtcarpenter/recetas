@@ -39,6 +39,21 @@ if !ARGV[1].nil?
   end
 end
 
+name = ''
+attempts = 0
+maximum_attempts = 5
+while name.empty?
+  if name.empty?
+    puts 'Name cannot be empty.'
+  end
+  if attempts == maximum_attempts
+    puts 'Reached maximum number of attempts.'
+    exit
+  end
+  puts 'Enter a name'
+  name = STDIN.gets.strip
+  attempts += 1
+end
 
 attempts = 0
 maximum_attempts = 5
@@ -63,10 +78,10 @@ while password.empty? || password.length < min_length || password != password_co
   password = STDIN.noecho(&:gets).strip
   puts 'Confirm password'
   password_confirmation = STDIN.noecho(&:gets).strip
-  attempts += 1;
+  attempts += 1
 end
 
-user = User.new({:email => email, :password => password, :password_confirmation => password_confirmation, :admin => admin })
+user = User.new({:email => email, :name => name, :password => password, :password_confirmation => password_confirmation, :admin => admin })
 if user.save(:validate => false)
   puts "User #{email} saved."
   exit

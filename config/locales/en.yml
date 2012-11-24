@@ -66,6 +66,7 @@ en:
       errors_message: "prevented this user from being saved:"
       admin: "Admin"
       email: "Email"
+      name: "Name"
       password: "Password"
       password_confirmation: "Confirm Password"
       save: "Save"

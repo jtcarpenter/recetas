@@ -63,6 +63,7 @@ es:
       errors_message: "prohibido este usuario se guarde:"
       admin: "Admin"
       email: "Correo electrónico"
+      name: "Nombre"
       password: "Contraseña"
       password_confirmation: "Confirmar Contraseña"
       save: "Guardar"
