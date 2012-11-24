@@ -3,7 +3,8 @@ require 'faker'
 FactoryGirl.define do
   factory :post do
     title "test title"
-    summary {Faker::Lorem.paragraphs(paragraph_count = 3, supplemental = false)}
+    summary {Faker::Lorem.paragraphs(paragraph_count = 1, supplemental = false)}
+    content {Faker::Lorem.paragraph(paragraph_count = 3)}
     published true
 
     factory :invalid_post do

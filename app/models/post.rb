@@ -1,7 +1,8 @@
 class Post < ActiveRecord::Base
-  attr_accessible :image, :published, :summary, :title, :image_cache, :remove_image, :tag_list
+  attr_accessible :image, :published, :summary, :title, :image_cache, :remove_image, :tag_list, :content
   mount_uploader :image, ImageUploader
   validates :title, :presence => true
+  validates :content, :presence => true, :length => { :minimum => 5 }
   acts_as_taggable
   has_many  :comments, :dependent => :destroy
 

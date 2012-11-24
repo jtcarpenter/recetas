@@ -12,7 +12,6 @@ class PostsController < ApplicationController
     else
       @posts = Post.where(args).order("updated_at DESC").page(params[:page]).per(2)
     end
-    render action: "index"
   end
 
   def drafts

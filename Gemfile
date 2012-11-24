@@ -41,12 +41,20 @@ group :assets do
 end
 
 gem 'jquery-rails'
+
 gem 'devise'
+
 gem 'jasmine', '~> 1.2.0', :group => [:development, :test]
+
 gem 'rmagick', '~> 2.13.1'
 gem 'carrierwave', '~> 0.7.1'
+
 gem "kaminari", "~> 0.14.1"
+
 gem 'acts-as-taggable-on', '~> 2.3.1'
+
+gem "ckeditor", "3.7.3"
+gem "mini_magick"
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

@@ -78,6 +78,8 @@ es:
       user:
         password: ""
     errors:
+      messages:
+        record_invalid: "Registro no válido"
       models:
         user:
           attributes:
