@@ -56,6 +56,9 @@ en:
       edit_post_link: "Edit"
     tags:
       name: "Tags"
+    user:
+      by: "By"
+      last_updated_by: "Last updated by"
   users:
     created: "created"
     form:
@@ -97,3 +100,6 @@ en:
           attributes:
             title:
               blank: "The title cannot be blank"
+            content:
+              blank: "You must add some content"
+              too_short: "You must add a little bit more content"

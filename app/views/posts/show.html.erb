@@ -4,11 +4,16 @@
   <p id="notice"><%= notice %></p>
 <% end %>
 
+<% if @post.user %>
+  <p><%= t("posts.user.by") %> <%= @post.user.name %></p>
+<% end %>
+
 <% if @post.summary.to_s != "" %>
   <p>
     <%= @post.summary %>
   </p>
 <% end %>
+
 <% if @post.image.to_s != "" %>
   <%= image_tag @post.image_url(:show).to_s %>
 <% end %>

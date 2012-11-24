@@ -53,6 +53,9 @@ es:
       edit_post_link: "Editar"
     tags:
       name: "Etiquetas"
+    user:
+      by: "Por"
+      last_updated_by: "Última actualización de"
   users:
     created: "creado"
     form:
@@ -94,3 +97,6 @@ es:
           attributes:
             title:
               blank: "El título no puede estar en blanco"
+            content:
+              blank: "Debe añadir algún contenido"
+              too_short: "Debe añadir contenido un poco más"
