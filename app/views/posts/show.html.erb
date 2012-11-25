@@ -23,7 +23,7 @@
 <p>
   <%= raw @post.content %>
 </p>
-<% if user_signed_in? %>
+<% if user_signed_in? && current_user == @post.user %>
   <span class="icon-pencil"></span>
   <small>
     <%= link_to t("posts.show.edit_post_link"), edit_post_path(@post) %>

@@ -32,6 +32,9 @@ class PostsController < ApplicationController
 
   def edit
     @post = Post.find(params[:id])
+    if @post.user != current_user
+      render :status => :unauthorized, :text => t("posts.edit.unauthorized")
+    end
   end
 
   def create
@@ -46,7 +49,9 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update_attributes(params[:post])
+    if @post.user != current_user
+      render :status => :unauthorized, :text => t("posts.edit.unauthorized")
+    elsif @post.update_attributes(params[:post])
       redirect_to @post, notice: t("posts.successfully_updated")
     else
       render action: "edit"

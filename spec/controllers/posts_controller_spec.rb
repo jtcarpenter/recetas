@@ -58,6 +58,14 @@ describe PostsController do
         get :edit, id: @post
         response.should render_template :edit
       end
+      it "prevents editing of other users posts" do
+        foreign_user = create(:user)
+        foreign_post = create(:post)
+        foreign_post.user = foreign_user
+        foreign_post.save
+        get :edit, id: foreign_post
+        response.response_code.should == 401
+      end
     end
     describe 'POST #create' do
       context "with valid attributes" do
@@ -85,12 +93,18 @@ describe PostsController do
     end
     describe 'PUT #update' do
       before :each do
-        @post = create(:post, title: "update test")
+        @post = create(:post, title: "update test", user: @user)
       end
       context "with valid attributes" do
         it "located the requested @post" do
           put :update, id: @post, post: attributes_for(:post)
           assigns(:post).should eq(@post)
+        end
+        it "prevents updating of other users posts" do
+          foreign_user = create(:user)
+          foreign_post = create(:post, user: foreign_user)
+          put :update, id: foreign_post, post: attributes_for(:post)
+          response.response_code.should == 401
         end
         it "changes @post's attributes" do
           put :update, id: @post, post: attributes_for(:post, title: "title")
@@ -187,8 +201,8 @@ describe PostsController do
 
   describe "signed in access" do
     before :each do
-      @post = create(:post)
       @user = create(:user)
+      @post = create(:post, user: @user)
       sign_in :user, @user
     end
     it_behaves_like "public access to posts"

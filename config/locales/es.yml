@@ -40,6 +40,7 @@ es:
     edit:
       title: "Editar Entrada"
       cancel: "Cancelar"
+      unauthorized: "Usted no está autorizado a editar esta entrada."
     index:
       title: "Entradas"
       show_link: "Mostrar"

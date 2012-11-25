@@ -12,15 +12,15 @@
       <%= t("posts.tags.name") %>: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
     </p>
 
-    <% if user_signed_in? %>
-    <span class="icon-pencil"></span>
-    <small>
-      <%= link_to t("posts.index.edit_link"), edit_post_path(post) %>
-    </small>
-    <span class="icon-remove"></span>
-    <small>
-      <%= link_to t("posts.index.destroy_link"), post, method: :delete, data: { confirm: t("posts.index.destroy_warning") } %>
-    </small>
+    <% if user_signed_in? && current_user == post.user %>
+      <span class="icon-pencil"></span>
+      <small>
+        <%= link_to t("posts.index.edit_link"), edit_post_path(post) %>
+      </small>
+      <span class="icon-remove"></span>
+      <small>
+        <%= link_to t("posts.index.destroy_link"), post, method: :delete, data: { confirm: t("posts.index.destroy_warning") } %>
+      </small>
     <% end %>
   </li>
 <% end %>

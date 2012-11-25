@@ -43,6 +43,7 @@ en:
     edit:
       title: "Edit Post"
       cancel: "Cancel"
+      unauthorized: "You are not authorized to edit this post."
     index:
       title: "Posts"
       show_link: "Show"
