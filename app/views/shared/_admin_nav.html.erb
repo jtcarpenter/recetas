@@ -19,6 +19,9 @@
         <li <% if(current_page?(:controller => 'posts', :action => 'drafts')) %>class="active"<% end %>>
           <%= link_to t("shared.admin_nav.drafts_link"), '/posts/drafts', :id => 'drafts_link' %>
         </li>
+        <li <% if(current_page?(:controller => 'users', :action => 'edit', :id => current_user.id)) %>class="active"<% end %>>
+          <%= link_to t("shared.admin_nav.edit_profile_link"), edit_user_path(current_user), :id => 'edit_user_link' %>
+        </li>
         <% if current_user.try(:admin?) %>
           <li <% if(current_page?(:controller => 'users', :action => 'new')) %>class="active"<% end %>>
             <%= link_to t("shared.admin_nav.new_user_link"), new_user_path, :id => 'new_user_link' %>

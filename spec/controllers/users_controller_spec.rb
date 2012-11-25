@@ -13,6 +13,41 @@ describe UsersController do
         response.should render_template :index
       end
     end
+    describe 'GET #edit' do
+      it "assigns the requested user to @user" do
+        get :edit, id: @user
+        assigns(:user).should eq @user
+      end
+      it "renders the :edit template" do
+        get :edit, id: @current_user
+        response.should render_template :edit
+      end
+      it "prevents editing of other users profiles" do
+        get :edit, id: @signed_out_user
+        response.response_code.should == 401
+      end
+    end
+    describe 'PUT #update' do
+      before :each do
+        @user = create(:user)
+      end
+      context "with valid attributes" do
+        it "located the requested @user" do
+          put :update, id: @user, user: attributes_for(:user)
+          assigns(:user).should eq(@user)
+        end
+        it "prevents updating of other users profiles" do
+          put :update, id: @signed_out_user, user: attributes_for(:user)
+          response.response_code.should == 401
+        end
+        it "changes @users's attributes"
+        it "redirects to the updated user"
+      end
+      context "with invalid attributes" do
+        it "does not change @user's attributes"
+        it "re-renders the edit method"
+      end
+    end
   end
 
   shared_examples("admin access to users") do
@@ -95,6 +130,8 @@ describe UsersController do
       @user = create(:user)
       @admin = create(:admin)
       sign_in :user, @user
+      @current_user = @user
+      @signed_out_user = @admin
     end
     it_behaves_like "signed in access to users"
     describe 'GET #new' do
@@ -122,6 +159,8 @@ describe UsersController do
       @user = create(:user)
       @admin = create(:admin)
       sign_in :user, @admin
+      @current_user = @admin
+      @signed_out_user = @user
     end
     it_behaves_like "signed in access to users"
     it_behaves_like "admin access to users"

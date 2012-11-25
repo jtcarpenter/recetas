@@ -18,12 +18,15 @@
 
   <div><%= f.label :name, t("users.form.name") %><br />
   <%= f.text_field :name %></div>
-
+<!-- password probably shouldn't be edited here -->
+<!-- or not in this way -->
+<!-- perhaps password be ignored if left empty -->
   <div><%= f.label :password, t("users.form.password") %><br />
   <%= f.password_field :password %></div>
 
   <div><%= f.label :password_confirmation, t("users.form.password_confirmation") %><br />
   <%= f.password_field :password_confirmation %></div>
+<!-- end -->
 
   <div><%= f.submit t("users.form.save"), :id => 'create_user', :class => 'btn' %></div>
 <% end %>

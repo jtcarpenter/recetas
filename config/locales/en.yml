@@ -15,6 +15,7 @@ en:
     admin_nav:
       new_post_link: "New Post"
       drafts_link: "Drafts"
+      edit_profile_link: "Edit Profile"
       new_user_link: "New User"
       users_link: "Users"
       logout_link: "Sign out"
@@ -62,6 +63,7 @@ en:
       last_updated_by: "Last updated by"
   users:
     created: "created"
+    successfully_updated: "Successfully updated."
     form:
       errors: 
         zero: "0 errors"
@@ -81,6 +83,10 @@ en:
     new:
       title: "Nuevo Usuario"
       cancel: "Cancelar"
+    edit:
+      title: "Edit Profile"
+      cancel: "Cancel"
+      unauthorized: "You are not authorized to edit this user."
   activerecord:
     attributes:
       user:

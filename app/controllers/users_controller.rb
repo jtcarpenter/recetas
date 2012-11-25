@@ -27,6 +27,24 @@ class UsersController < ApplicationController
     end
   end
 
+  def edit
+    @user = User.find(params[:id])
+    if @user != current_user
+      render :status => :unauthorized, :text => t("users.edit.unauthorized")
+    end
+  end
+
+  def update
+    @user = User.find(params[:id])
+    if @user != current_user
+      render :status => :unauthorized, :text => t("users.edit.unauthorized")
+    elsif @user.update_attributes(params[:user])
+      redirect_to @user, notice: t("users.successfully_updated")
+    else
+      render action: "edit"
+    end
+  end
+
   def destroy
     if !current_user.admin?
       redirect_to root_url

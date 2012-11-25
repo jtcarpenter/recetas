@@ -12,6 +12,7 @@ es:
     admin_nav:
       new_post_link: "Nueva Entrada"
       drafts_link: "Borradores"
+      edit_profile_link: "Editar perfil"
       new_user_link: "Nuevo Usuario"
       users_link: "Usuarios"
       logout_link: "Salir"
@@ -59,6 +60,7 @@ es:
       last_updated_by: "Última actualización de"
   users:
     created: "creado"
+    successfully_updated: "Actualizado con éxito."
     form:
       errors: 
         zero: "0 errores"
@@ -78,6 +80,10 @@ es:
     new:
       title: "Nuevo Usuario"
       cancel: "Cancelar"
+    edit:
+      title: "Editar perfil"
+      cancel: "Cancelar"
+      unauthorized: "Usted no está autorizado a editar esta usuario."
   activerecord:
     attributes:
       user:
