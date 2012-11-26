@@ -40,12 +40,27 @@ describe UsersController do
           put :update, id: @signed_out_user, user: attributes_for(:user)
           response.response_code.should == 401
         end
-        it "changes @users's attributes"
-        it "redirects to the updated user"
+        it "changes @users's attributes" do
+          put :update, id: @current_user, user: attributes_for(:user, name: "new name")
+          @current_user.reload
+          @current_user.name.should eq("new name")
+        end
+        it "redirects to the updated user" do
+          put :update, id: @current_user, user: attributes_for(:user)
+          response.should redirect_to root_path
+        end
       end
       context "with invalid attributes" do
-        it "does not change @user's attributes"
-        it "re-renders the edit method"
+        it "does not change @user's attributes" do
+          put :update, id: @current_user, user: attributes_for(:user, name: nil)
+          @current_user.reload
+          @current_user.name.should_not eq("new name")
+        end
+        it "re-renders the edit method" do
+          put :update, id: @current_user, user: attributes_for(:user, name: nil)
+          @current_user.reload
+          response.should render_template :edit
+        end
       end
     end
   end

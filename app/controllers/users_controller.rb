@@ -39,7 +39,8 @@ class UsersController < ApplicationController
     if @user != current_user
       render :status => :unauthorized, :text => t("users.edit.unauthorized")
     elsif @user.update_attributes(params[:user])
-      redirect_to @user, notice: t("users.successfully_updated")
+      sign_in(@user, :bypass => true)
+      redirect_to root_path, notice: t("users.successfully_updated")
     else
       render action: "edit"
     end
