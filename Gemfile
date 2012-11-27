@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+  source 'https://rubygems.org'
 
 group :production do
   gem 'pg'
@@ -55,6 +55,8 @@ gem 'acts-as-taggable-on', '~> 2.3.1'
 
 gem "ckeditor", "3.7.3"
 gem "mini_magick"
+
+gem 'fog', '~> 1.7.0'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
