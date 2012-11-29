@@ -1,21 +1,30 @@
 class PostsController < ApplicationController
 
   before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :set_per_page
+
+  def set_per_page
+    @per_page = 5
+  end
 
   def index
-    args = ["published = ?", true]
     if params[:tag]
       if user_signed_in?
-        args = []
+        @posts = Post.all.tagged_with(params[:tag]).page(params[:page]).per(@per_page)
+      else
+        @posts = Post.published.tagged_with(params[:tag]).page(params[:page]).per(@per_page)
       end
-      @posts = Post.where(args).tagged_with(params[:tag]).order("updated_at DESC").page(params[:page]).per(2)
     else
-      @posts = Post.where(args).order("updated_at DESC").page(params[:page]).per(2)
+      if user_signed_in?
+        @posts = Post.all.page(params[:page]).per(@per_page)
+      else
+        @posts = Post.published.page(params[:page]).per(@per_page)
+      end
     end
   end
 
   def drafts
-    @posts = Post.where("published = ?", false).order("updated_at DESC").page(params[:page]).per(2)
+    @posts = Post.unpublished.page(params[:page]).per(@per_page)
     render action: "index"
   end
 

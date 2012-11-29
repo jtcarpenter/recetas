@@ -7,11 +7,7 @@ class Post < ActiveRecord::Base
   has_many  :comments, :dependent => :destroy
   belongs_to :user
 
-  def self.published
-    where("published = ?", true)
-  end
-
-  def self.unpublished
-    where("published = ?", false)
-  end
+  scope :all, order("updated_at DESC")
+  scope :published, where(:published => true).order("updated_at DESC")
+  scope :unpublished, where(:published => false).order("updated_at DESC")
 end

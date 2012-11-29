@@ -17,8 +17,8 @@ describe Post do
       @unpublished = FactoryGirl.create(:post, title: "unpublished", published: false)
     end
     context "published" do
-      it "returns an array of published results" do
-        Post.published.should eq [@published1, @published2]
+      it "returns an array of ordered (descending) published results" do
+        Post.published.should eq [@published2, @published1]
       end
     end
     context "unpublished" do
