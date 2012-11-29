@@ -1,4 +1,4 @@
-sheltered-headland-1477
+Heroku app name: sheltered-headland-1477
 
 Install Imagick
 
