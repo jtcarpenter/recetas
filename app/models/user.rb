@@ -7,8 +7,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :posts, :dependent => :destroy
+  has_many :comments, :dependent => :destroy
   validates :name, :presence => true
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :admin, :email, :password, :password_confirmation, :remember_me, :name, :posts
+  attr_accessible :admin, :email, :password, :password_confirmation, :remember_me, :name, :posts, :comments
 end
