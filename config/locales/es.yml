@@ -2,6 +2,7 @@ es:
   layouts:
     application:
       title: "Recetas de Marta"
+      search_button: "Buscar"
   views:
     pagination:
       previous: "&lt;"

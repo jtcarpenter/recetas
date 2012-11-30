@@ -8,7 +8,13 @@ class PostsController < ApplicationController
   end
 
   def index
-    if params[:tag]
+    if params[:search]
+      if user_signed_in?
+        @posts = Post.all.search(params[:search]).page(params[:page]).per(@per_page)
+      else
+        @posts = Post.published.search(params[:search]).page(params[:page]).per(@per_page)
+      end
+    elsif params[:tag]
       if user_signed_in?
         @posts = Post.all.tagged_with(params[:tag]).page(params[:page]).per(@per_page)
       else

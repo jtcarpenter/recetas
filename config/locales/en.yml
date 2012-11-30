@@ -5,6 +5,7 @@ en:
   layouts:
     application:
       title: "Marta's Recipes"
+      search_button: "Search"
   views:
     pagination:
       previous: "&lt;"
