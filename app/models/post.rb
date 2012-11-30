@@ -12,13 +12,11 @@ class Post < ActiveRecord::Base
   scope :unpublished, where(:published => false).order("updated_at DESC")
 
   def self.search(search)
-    if search
-      #find(:all, :conditions => ['title LIKE ? OR summary LIKE ? OR content LIKE ? ', "%#{search}%", "%#{search}%", "%#{search}%" ])
-      #q = "%#{params[:query]}%"
-      #User.where("name like ? or description like ?", q, q).to_sql
-      where('title LIKE ? OR summary LIKE ? OR content LIKE ? ', "%#{search}%", "%#{search}%", "%#{search}%")
+    q = "%#{search}%"
+    if ENV['RAILS_ENV'] == 'production'
+      where('title LIKE ? OR summary LIKE ? OR content LIKE ? ', q, q, q)
     else
-      find(:all)
+      where('title LIKE ? OR summary LIKE ? OR content LIKE ? ', q, q, q)
     end
   end
 end
