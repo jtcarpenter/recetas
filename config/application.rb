@@ -10,6 +10,14 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
+DB = YAML.load(File.read(File.expand_path('../database.yml', __FILE__)))
+DB.merge! DB.fetch(Rails.env, {})
+DB.symbolize_keys!
+
+if ENV['RAILS_ENV'] != 'production'
+  ENV.update YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
+end
+
 module Recetas
   class Application < Rails::Application
     # Settings in config/environments/* take precedence over those specified here.

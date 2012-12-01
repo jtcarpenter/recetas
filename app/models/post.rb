@@ -11,12 +11,17 @@ class Post < ActiveRecord::Base
   scope :published, where(:published => true).order("updated_at DESC")
   scope :unpublished, where(:published => false).order("updated_at DESC")
 
-  def self.search(search)
+  def self.simple_search(search)
     q = "%#{search}%"
-    if ENV['RAILS_ENV'] == 'production'
+    where('title LIKE ? OR summary LIKE ? OR content LIKE ? ', q, q, q)
+  end
+
+  def self.search(search)
+    if DB[:adapter] == 'postgresql'
+      q = "%#{search}%"
       where('title LIKE ? OR summary LIKE ? OR content LIKE ? ', q, q, q)
     else
-      where('title LIKE ? OR summary LIKE ? OR content LIKE ? ', q, q, q)
+      simple_search(search)
     end
   end
 end
