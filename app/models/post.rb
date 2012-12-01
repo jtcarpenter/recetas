@@ -17,7 +17,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.search(search)
-    if DB[:adapter] == 'postgresql'
+    if ENV['RAILS_ENV'] == 'production' || DB[:adapter] == 'postgresql'
       q = "%#{search}%"
       where('title LIKE ? OR summary LIKE ? OR content LIKE ? ', q, q, q)
     else

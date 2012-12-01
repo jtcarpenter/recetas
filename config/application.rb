@@ -10,11 +10,10 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-DB = YAML.load(File.read(File.expand_path('../database.yml', __FILE__)))
-DB.merge! DB.fetch(Rails.env, {})
-DB.symbolize_keys!
-
 if ENV['RAILS_ENV'] != 'production'
+  DB = YAML.load(File.read(File.expand_path('../database.yml', __FILE__)))
+  DB.merge! DB.fetch(Rails.env, {})
+  DB.symbolize_keys!
   ENV.update YAML.load(File.read(File.expand_path('../application.yml', __FILE__)))
 end
 
