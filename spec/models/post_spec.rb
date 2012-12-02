@@ -18,7 +18,7 @@ describe Post do
     end
     context "published" do
       it "returns an array of ordered (descending) published results" do
-        Post.published.should eq [@published2, @published1]
+        Post.published_ordered.should eq [@published2, @published1]
       end
     end
     context "unpublished" do

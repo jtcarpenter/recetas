@@ -16,21 +16,21 @@ class PostsController < ApplicationController
       end
     elsif params[:tag]
       if user_signed_in?
-        @posts = Post.all.tagged_with(params[:tag]).page(params[:page]).per(@per_page)
+        @posts = Post.all_ordered.tagged_with(params[:tag]).page(params[:page]).per(@per_page)
       else
-        @posts = Post.published.tagged_with(params[:tag]).page(params[:page]).per(@per_page)
+        @posts = Post.published_ordered.tagged_with(params[:tag]).page(params[:page]).per(@per_page)
       end
     else
       if user_signed_in?
-        @posts = Post.all.page(params[:page]).per(@per_page)
+        @posts = Post.all_ordered.page(params[:page]).per(@per_page)
       else
-        @posts = Post.published.page(params[:page]).per(@per_page)
+        @posts = Post.published_ordered .page(params[:page]).per(@per_page)
       end
     end
   end
 
   def drafts
-    @posts = Post.unpublished.page(params[:page]).per(@per_page)
+    @posts = Post.unpublished_ordered.page(params[:page]).per(@per_page)
     render action: "index"
   end
 

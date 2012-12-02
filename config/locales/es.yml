@@ -1,4 +1,5 @@
 es:
+  language_str: "spanish"
   layouts:
     application:
       title: "Recetas de Marta"
