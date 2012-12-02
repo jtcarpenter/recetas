@@ -20,8 +20,8 @@ class Post < ActiveRecord::Base
   end
 
   def self.search(search)
-    lang = I18n.t("language_str")
     if ENV['RAILS_ENV'] == 'production' || DB[:adapter] == 'postgresql'
+      lang = I18n.t("language_str")
       rank = <<-RANK
         ts_rank(to_tsvector('#{lang}', title), plainto_tsquery('#{lang}', #{sanitize(search)})) +
         ts_rank(to_tsvector('#{lang}', summary), plainto_tsquery('#{lang}', #{sanitize(search)})) +
