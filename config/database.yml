@@ -15,7 +15,7 @@ development:
   database: recetas_development
   pool: 5
   username: recetas
-  password: Gin148Ger
+  password: 
   socket: 
 
 # Warning: The database defined as "test" will be erased and

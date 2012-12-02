@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(:version => 20121129201429) do
   add_index "ckeditor_assets", ["assetable_type", "type", "assetable_id"], :name => "idx_ckeditor_assetable_type"
 
   create_table "comments", :force => true do |t|
+    t.string   "commenter"
     t.text     "body"
     t.integer  "post_id"
     t.datetime "created_at", :null => false
