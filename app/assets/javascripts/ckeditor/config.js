@@ -1,61 +1,18 @@
-CKEDITOR.config.defaultLanguage = 'es';
-CKEDITOR.config.height = 500;
+CKEDITOR.editorConfig = function( config )
+{
+  lang = $('html').attr('lang');
 
-CKEDITOR.config.plugins =
-'about,' +
-'a11yhelp,' +
-'basicstyles,' +
-'bidi,' +
-'blockquote,' +
-'button,' +
-'clipboard,' +
-'colorbutton,' +
-'colordialog,' +
-'contextmenu,' +
-'dialogadvtab,' +
-'div,' +
-'elementspath,' +
-'enterkey,' +
-'entities,' +
-'filebrowser,' +
-'find,' +
-'flash,' +
-'font,' +
-'format,' +
-'forms,' +
-'horizontalrule,' +
-'htmldataprocessor,' +
-'iframe,' +
-'image,' +
-'indent,' +
-'justify,' +
-'keystrokes,' +
-'link,' +
-'list,' +
-'liststyle,' +
-'maximize,' +
-'newpage,' +
-'pagebreak,' +
-'pastefromword,' +
-'pastetext,' +
-'popup,' +
-'preview,' +
-'print,' +
-'removeformat,' +
-'resize,' +
-//'save,' +
-'scayt,' +
-'showblocks,' +
-'showborders,' +
-'smiley,' +
-'sourcearea,' +
-'specialchar,' +
-'stylescombo,' +
-'tab,' +
-'table,' +
-'tabletools,' +
-'templates,' +
-'toolbar,' +
-'undo,' +
-'wsc,' +
-'wysiwygarea';
+  config.toolbar = 'MyToolbar';
+  config.defaultLanguage = lang;
+  config.height = 500;
+  config.format_tags = 'p;h1;h2;h3;h4;h5;h6';
+
+  config.toolbar_MyToolbar =
+  [
+    { name: 'document', items : [ 'Maximize', '-', 'NewPage','Preview' ] },
+    { name: 'clipboard', items : [ 'Cut','Copy','Paste','PasteText','-','Undo','Redo' ] },
+    { name: 'editing', items : [ 'Find','Replace','-','SelectAll','-','Scayt', '-', 'SpecialChar' ] },
+    { name: 'styles', items : [ 'Format', 'Bold','Italic','Strike','-','RemoveFormat' ] },
+    { name: 'types', items : [ 'NumberedList','BulletedList', '-', 'Link', 'Unlink' ] }
+  ];
+};

@@ -24,6 +24,7 @@ es:
     title: "Categorías"
   tags:
     title: "Etiquetas"
+    tags_list: "Lista de etiquetas"
   posts:
     successfully_created: "Entrada ha sido creado con éxito."
     successfully_updated: "Entrada ha sido actualizado con éxito."
@@ -37,6 +38,7 @@ es:
       published: "Publicado"
       summary: "Resumen"
       image: "Imagen"
+      content: "Contenido"
       create: "Guardar"
       remove_image: "Quitar imagen"
       tag_list: "Etiquetas (separadas por comas)"
