@@ -5,7 +5,7 @@
 <% end %>
 
 <% if @post.user %>
-  <p><%= t("posts.user.by") %> <%= @post.user.name %></p>
+  <%= "#{t("posts.user.by")} " %><%= link_to @post.user.name, posts_users_path(@post.user.id) %>
 <% end %>
 
 <% if @post.summary.to_s != "" %>

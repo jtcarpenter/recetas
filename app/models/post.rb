@@ -14,6 +14,10 @@ class Post < ActiveRecord::Base
   scope :published_ordered, where(:published => true).order("updated_at DESC")
   scope :unpublished_ordered, where(:published => false).order("updated_at DESC")
 
+  def self.by_user(user)
+    where(:user_id => user)
+  end
+
   def self.simple_search(search)
     q = "%#{search}%"
     where('title LIKE ? OR summary LIKE ? OR content LIKE ? ', q, q, q)

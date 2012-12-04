@@ -14,6 +14,12 @@ class PostsController < ApplicationController
       else
         @posts = Post.published.search(params[:search]).page(params[:page]).per(@per_page)
       end
+    elsif params[:user]
+      if user_signed_in?
+        @posts = Post.all_ordered.by_user(params[:user]).page(params[:page]).per(@per_page)
+      else
+        @posts = Post.published_ordered.by_user(params[:user]).page(params[:page]).per(@per_page)
+      end
     elsif params[:tag]
       if user_signed_in?
         @posts = Post.all_ordered.tagged_with(params[:tag]).page(params[:page]).per(@per_page)

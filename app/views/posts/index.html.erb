@@ -5,7 +5,7 @@
     <h2><%= link_to post.title, post %></h2>
     <p><%= post.updated_at %></p>
     <% if post.user %>
-      <p><%= t("posts.user.by") %> <%= post.user.name %></p>
+      <%= "#{t("posts.user.by")} " %><%= link_to post.user.name, posts_users_path(post.user.id) %>
     <% end %>
     <p>
       <%= t("posts.tags.name") %>: <%= raw post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>

@@ -4,7 +4,8 @@ Recetas::Application.routes.draw do
   devise_for :users
   resources :users
 
-  match "posts/drafts" => "posts#drafts"
+  get 'posts/drafts' => 'posts#drafts', :as => :posts_drafts
+  get 'posts/users/:user' => 'posts#index', :as => :posts_users
   resources :posts do
     resources :comments
   end
