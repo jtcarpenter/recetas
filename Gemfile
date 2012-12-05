@@ -5,7 +5,13 @@ group :production do
 end
 
 group :development do
-  #gem 'sqlite3'
+  gem 'sqlite3'
+  gem 'rspec-rails', '~> 2.10.1'
+  gem 'factory_girl_rails', '~> 3.2.0'
+  gem 'guard-rspec', '~> 0.7.0'
+end
+
+group :staging do
   gem "pg"
   gem 'rspec-rails', '~> 2.10.1'
   gem 'factory_girl_rails', '~> 3.2.0'
@@ -14,7 +20,6 @@ end
 
 group :test do
   gem 'sqlite3'
-  #gem "pg"
   gem 'factory_girl_rails', '~> 3.2.0'
   gem 'faker', '~> 1.0.1'
   gem 'capybara', '~> 1.1.2'
