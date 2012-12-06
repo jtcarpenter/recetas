@@ -4,6 +4,10 @@ group :production do
   gem 'pg'
 end
 
+group :postgres do
+  gem "pg"
+end
+
 group :development do
   gem 'sqlite3'
   gem 'rspec-rails', '~> 2.10.1'
@@ -12,7 +16,6 @@ group :development do
 end
 
 group :staging do
-  gem "pg"
   gem 'rspec-rails', '~> 2.10.1'
   gem 'factory_girl_rails', '~> 3.2.0'
   gem 'guard-rspec', '~> 0.7.0'
@@ -51,7 +54,7 @@ gem 'jquery-rails'
 
 gem 'devise'
 
-gem 'jasmine', '~> 1.2.0', :group => [:development, :test]
+gem 'jasmine', '~> 1.2.0', :group => [:development, :test, :staging]
 
 gem 'rmagick', '~> 2.13.1'
 gem 'carrierwave', '~> 0.7.1'
