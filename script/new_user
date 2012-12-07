@@ -75,12 +75,12 @@ while password.empty? || password.length < min_length || password != password_co
   end
   puts 'Enter password'
   system "stty -echo"
-  name = STDIN.gets.strip
-  system "stty -echo"
+  password = STDIN.gets.strip
+  system "stty echo"
   puts 'Confirm password'
   system "stty -echo"
-  name = STDIN.gets.strip
-  system "stty -echo"
+  password_confirmation = STDIN.gets.strip
+  system "stty echo"
   attempts += 1
 end
 
