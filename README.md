@@ -49,7 +49,7 @@ Production Details
 Heroku App Name
 ---------------
 
-Heroku app name: sheltered-headland-1477
+Heroku app name: vast-escarpment-5894
 
 Heroku Config
 -------------
