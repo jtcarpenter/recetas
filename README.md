@@ -43,6 +43,11 @@ Launch the database with:
 
     $ RAILS_ENV=staging rails db
 
+Create initial local user
+-------------------------
+
+$ rails runner script/new_user email@address.com true
+
 Production Details
 ==================
 
@@ -56,3 +61,8 @@ Heroku Config
 
     $ add config to heroku
     $ heroku config:add AWS_ACCESS_KEY_ID=xxx AWS_SECRET_ACCESS_KEY=xxx GMAIL_USER_NAME=xxx GMAIL_PASSWORD=xxx
+
+Create initial remote user
+--------------------------
+
+$ heroku run rails runner script/new_user email@address.com true 
