@@ -67,8 +67,6 @@ gem "mini_magick"
 
 gem 'fog', '~> 1.7.0'
 
-gem 'activesupport', '~> 3.2.8'
-
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

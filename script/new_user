@@ -1,6 +1,5 @@
 #!/usr/bin/env ruby
 # rails runner script/new_user example@domain.con true|false
-require 'io/console'
 
 class String
   def to_b
