@@ -74,9 +74,13 @@ while password.empty? || password.length < min_length || password != password_co
     exit
   end
   puts 'Enter password'
-  password = STDIN.noecho(&:gets).strip
+  system "stty -echo"
+  name = STDIN.gets.strip
+  system "stty -echo"
   puts 'Confirm password'
-  password_confirmation = STDIN.noecho(&:gets).strip
+  system "stty -echo"
+  name = STDIN.gets.strip
+  system "stty -echo"
   attempts += 1
 end
 
