@@ -12,7 +12,8 @@
 //
 //= require jquery
 //= require jquery_ujs
+// require jquery-ui
 //= require html5shiv
-//= require ckeditor/config.js
 //= require ckeditor/init
+//= require ckeditor/config.js
 //= require_tree .
