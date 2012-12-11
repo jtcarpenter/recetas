@@ -13,7 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 // require jquery-ui
+//= require jquery.tokeninput
 //= require html5shiv
 //= require ckeditor/init
-//= require ckeditor/config.js
-//= require_tree .
+//= require ckeditor/config
+//= require posts
+//= require_self
+// require_tree .

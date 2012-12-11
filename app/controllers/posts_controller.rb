@@ -7,6 +7,15 @@ class PostsController < ApplicationController
     @per_page = 5
   end
 
+  def tags
+    @tags = Post.tag_counts.where("tags.name LIKE ?", "%#{params[:q]}%")
+    #@tags = Post.all_tag_counts.where(:conditions => ["#{ActsAsTaggableOn::Tag.table_name}.name LIKE ?", "%#{params[:q]}%"])
+    respond_to do |format|
+      format.json { render :json => @tags.map(&:attributes) }
+      #format.json { render :json => @tags.collect{|t| {:id => t.name, :name => t.name } } }
+    end
+  end
+
   def index
     if params[:search]
       if user_signed_in?
@@ -70,6 +79,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
+    exit
     if @post.user != current_user
       render :status => :unauthorized, :text => t("posts.edit.unauthorized")
     elsif @post.update_attributes(params[:post])

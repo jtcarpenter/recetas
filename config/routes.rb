@@ -10,6 +10,7 @@ Recetas::Application.routes.draw do
     resources :comments
   end
   get 'tags/:tag', to: 'posts#index', as: :tag
+  get "tags" => "posts#tags", :as => :posts_tags
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
