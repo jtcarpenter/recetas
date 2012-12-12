@@ -14,6 +14,21 @@ class PostsController < ApplicationController
       format.json { render :json => @tags.map(&:attributes) }
       #format.json { render :json => @tags.collect{|t| {:id => t.name, :name => t.name } } }
     end
+=begin
+    query = params[:q]
+    if query[-1,1] == " "
+      query = query.gsub(" ", "")
+      Tag.find_or_create_by_name(query)
+    end
+
+    #Do the search in memory for better performance
+
+    @tags = ActsAsTaggableOn::Tag.all
+    @tags = @tags.select { |v| v.name =~ /#{query}/i }
+    respond_to do |format|
+      format.json{ render :json => @tags.map(&:attributes) }
+    end
+=end
   end
 
   def index
@@ -79,7 +94,6 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    exit
     if @post.user != current_user
       render :status => :unauthorized, :text => t("posts.edit.unauthorized")
     elsif @post.update_attributes(params[:post])
