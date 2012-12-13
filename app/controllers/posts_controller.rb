@@ -8,13 +8,17 @@ class PostsController < ApplicationController
   end
 
   def tags
-    @tags = Post.tag_counts.where("tags.name LIKE ?", "%#{params[:q]}%")
-    #@tags = Post.all_tag_counts.where(:conditions => ["#{ActsAsTaggableOn::Tag.table_name}.name LIKE ?", "%#{params[:q]}%"])
+    @tags = Post.search_tags(params[:q])
     respond_to do |format|
       format.json { render :json => @tags.map(&:attributes) }
-      #format.json { render :json => @tags.collect{|t| {:id => t.name, :name => t.name } } }
     end
+  end
 =begin
+
+    #@tags = Post.all_tag_counts.where(:conditions => ["#{ActsAsTaggableOn::Tag.table_name}.name LIKE ?", "%#{params[:q]}%"])
+
+    #format.json { render :json => @tags.collect{|t| {:id => t.name, :name => t.name } } }
+
     query = params[:q]
     if query[-1,1] == " "
       query = query.gsub(" ", "")
@@ -29,7 +33,6 @@ class PostsController < ApplicationController
       format.json{ render :json => @tags.map(&:attributes) }
     end
 =end
-  end
 
   def index
     if params[:search]

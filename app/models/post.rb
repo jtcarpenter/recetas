@@ -41,4 +41,8 @@ class Post < ActiveRecord::Base
       simple_search(search)
     end
   end
+
+  def self.search_tags(search)
+    tag_counts.where("tags.name LIKE ?", "%#{search}%")
+  end
 end
