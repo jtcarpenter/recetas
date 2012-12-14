@@ -33,7 +33,7 @@
   </div>
   <div class="field">
     <%= f.label :tag_list, t("posts.form.tag_list") %><br />
-    <%= f.text_field :tag_list, :id => 'token-input', :"data-pre" => @post.tags.map(&:attributes).to_json %>
+    <%= f.text_field :tag_list, :id => 'tags-input' %>
   </div>
   <div class="field">
     <%= f.label :content, t("posts.form.content") %><br />
@@ -41,7 +41,7 @@
   </div>
 
   <div class="actions">
-    <%= f.submit t("posts.form.create"), :class => 'btn' %>
+    <%= f.submit t("posts.form.create"), :id => 'submit', :class => 'btn' %>
   </div>
 
 <% end %>

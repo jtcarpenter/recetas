@@ -13,7 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 // require jquery-ui
-//= require jquery.tokeninput
 //= require html5shiv
 //= require ckeditor/init
 //= require ckeditor/config
