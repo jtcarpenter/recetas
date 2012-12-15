@@ -1,5 +1,5 @@
 describe("AutoCom", function () {
-  var CSVMock, emptyCSVMock, listMock, labelTextMock, objectsMock;
+  var CSVMock, emptyCSVMock, listMock, labelTextMock, objectsMock, ulMock;
 
   beforeEach(function() {
     CSVMock = "first, second";
@@ -7,6 +7,7 @@ describe("AutoCom", function () {
     listMock = [$('<li/>').text('first'), $('<li/>').text('second')];
     labelTextMock = "Text (Text in parenthesis)";
     objectsMock = $.parseJSON('[{"id":1,"name":"tag1","count":1},{"id":2,"name":"tag2","count":2}]');
+    ulMock = $('<ul/>');
   });
   afterEach(function() {
     CSVMock = "";
@@ -14,6 +15,7 @@ describe("AutoCom", function () {
     listMock = [];
     labelMock = "";
     objectsMock = [];
+    ulMock = {};
   });
 
   it("converts CSV to and an array of li elements",  function () {
@@ -38,10 +40,9 @@ describe("AutoCom", function () {
     expect(list.length).toEqual(2);
     expect(list[0].text()).toEqual('tag1');
   });
-  it("appends a li element to a ul",  function () {
-    this.fail('NOT YET IMPLEMENTED');
-  });
-  it("deletes a 'tag' li from a ul",  function () {
-    this.fail('NOT YET IMPLEMENTED');
+  it("appends a string to a ul as a li element",  function () {
+    var tag = "new tag";
+    AutoCom.addTagToList(tag, ulMock);
+    expect($(ulMock).children().length).toEqual(1);
   });
 });

@@ -10,7 +10,9 @@ class PostsController < ApplicationController
   def tags
     @tags = Post.search_tags(params[:q])
     respond_to do |format|
-      format.json { render :json => @tags.map(&:attributes) }
+      if (params[:q].length != 0)
+        format.json { render :json => @tags.map(&:attributes) }
+      end
     end
   end
 

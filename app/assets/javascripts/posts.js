@@ -5,6 +5,7 @@ var AutoCom = {
   tagsUl: {},
   postTagsUl: {},
   form: {},
+  deleteBtn: '<span class="delete">x</span>',
 
   initDOM: function (form) {
     AutoCom.input = $('#tags-input');
@@ -12,22 +13,31 @@ var AutoCom = {
     AutoCom.tagsUl = $('<ul/>', {'id': 'tags'});
     AutoCom.postTagsUl = $('<ul/>', {'id': 'post-tags'});
     AutoCom.form = $(form);
+    //AutoCom.deleteBtn = $('<span/>', {'class': 'delete'}).text('x');
 
     AutoCom.label.text(AutoCom.removeParenthesised(AutoCom.label.text()));
 
-    AutoCom.tagsUl.insertBefore(AutoCom.label);
-    AutoCom.postTagsUl.insertAfter(AutoCom.input);
+    AutoCom.tagsUl.insertAfter(AutoCom.input);
+    AutoCom.postTagsUl.insertBefore(AutoCom.label);
 
-    AutoCom.postTagsUl.append(AutoCom.CSVToList(AutoCom.input.val()));
+    AutoCom.postTagsUl.append(AutoCom.CSVToList(AutoCom.input.val(), true));
     AutoCom.input.val('');
   },
 
-  CSVToList: function (csv) {
+  CSVToList: function (csv, deletable) {
     var tags = csv.split(','),
-        listItems = [];
+        listItems = [],
+        li = {},
+        del = {};
+
     $(tags).each(function (i, tag) {
       tag = $.trim(tag);
-      if (tag !== '') listItems.push( $('<li/>').text( tag ) );
+      li = $('<li/>').text( tag );
+      if (deletable) {
+        del = $(AutoCom.deleteBtn).click(AutoCom.deleteTag);
+        li.append(del);
+      }
+      if (tag !== '') listItems.push(li);
     });
     return listItems;
   },
@@ -48,15 +58,21 @@ var AutoCom = {
   },
 
   objectsToList: function (objects) {
-    var listItems = [];
+    var listItems = [],
+        li = {};
     $(objects).each(function (i, object) {
-      listItems.push( $('<li/>').text( $.trim(object.name) ) );
+      li = $('<li/>').text( $.trim(object.name) );
+      li.click(function (event) {
+        AutoCom.addTagToList($(this).text(), AutoCom.postTagsUl);
+      });
+      listItems.push( li );
     });
     return listItems;
   },
 
   searchTags: function (q) {
-    $.getJSON(AutoCom.searchURL, q, function (data, textStatus, jqXHR) {
+    $(AutoCom.tagsUl).children().remove();
+    $.getJSON(AutoCom.searchURL + '?q=' + q, function (data, textStatus, jqXHR) {
       $(AutoCom.tagsUl).append(AutoCom.objectsToList(data));
     });
   },
@@ -66,15 +82,37 @@ var AutoCom = {
     AutoCom.input.val(AutoCom.listToCSV(list));
   },
 
+  addTagToList: function (tag, ul) {
+    var li = $('<li/>').text(tag);
+    var del = $(AutoCom.deleteBtn).click(AutoCom.deleteTag);
+    li.append(del);
+    ul.append(li);
+  },
+
+  deleteTag: function (event) {
+    $(this).parent().remove();
+  },
+
   init: function (form) {
     AutoCom.initDOM(form);
     AutoCom.form.submit(AutoCom.submitForm);
-
-    //attach event for input key presses
+    AutoCom.input.bind({
+      keydown: function(event){
+        if (event.keyCode === 9 || event.keyCode === 16 || event.keyCode === 27) {
+          return;
+        }
+        var tag = AutoCom.input.val();
+        if (event.keyCode === 13) {
+          event.preventDefault();
+          AutoCom.addTagToList(tag, AutoCom.postTagsUl);
+        }
+        AutoCom.searchTags(tag);
+      }
+    });
     //on key press do search
     //return search to another list
     //attach ul
-    //on choose li add to post tags list
+    //on choose from serached tags add lo list
   }
 };
 
