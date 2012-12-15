@@ -13,12 +13,11 @@ var AutoCom = {
     AutoCom.tagsUl = $('<ul/>', {'id': 'tags'});
     AutoCom.postTagsUl = $('<ul/>', {'id': 'post-tags'});
     AutoCom.form = $(form);
-    //AutoCom.deleteBtn = $('<span/>', {'class': 'delete'}).text('x');
 
     AutoCom.label.text(AutoCom.removeParenthesised(AutoCom.label.text()));
 
     AutoCom.tagsUl.insertAfter(AutoCom.input);
-    AutoCom.postTagsUl.insertBefore(AutoCom.label);
+    AutoCom.postTagsUl.insertBefore(AutoCom.input);
 
     AutoCom.postTagsUl.append(AutoCom.CSVToList(AutoCom.input.val(), true));
     AutoCom.input.val('');
@@ -46,8 +45,9 @@ var AutoCom = {
     var tagStr = '',
         length = list.length;
     $(list).each(function (i, li) {
-      if ($(li).text() === '') return false;
-      tagStr += $(li).text();
+      var tag = AutoCom.removeDeleteBtn(li);
+      if (tag === '') return false;
+      tagStr += tag;
       if (i !== (length - 1)) tagStr += ', ';
     });
     return tagStr;
@@ -57,13 +57,32 @@ var AutoCom = {
     return text.replace(/\s*\([^\)]+\)\s*/, '');
   },
 
+  removeDeleteBtn: function (li) {
+    var str = '\\s*' + $(AutoCom.deleteBtn).text() + '\\s*',
+        RE = new RegExp(str, 'i');
+    return $(li).text().replace(RE, '');
+  },
+
+  tagExists: function(tag, ul) {
+    var exists = false;
+    ul.children().each(function (i, li) {
+      if (AutoCom.removeDeleteBtn(li) === tag) exists = true ;
+    });
+    return exists;
+  },
+
   objectsToList: function (objects) {
     var listItems = [],
         li = {};
     $(objects).each(function (i, object) {
       li = $('<li/>').text( $.trim(object.name) );
+      var tag = $(li).text();
+      if (AutoCom.tagExists(tag, AutoCom.postTagsUl)) {
+        return;
+      }
       li.click(function (event) {
-        AutoCom.addTagToList($(this).text(), AutoCom.postTagsUl);
+        AutoCom.addTagToList(tag, AutoCom.postTagsUl);
+        $(this).remove();
       });
       listItems.push( li );
     });
@@ -104,15 +123,14 @@ var AutoCom = {
         var tag = AutoCom.input.val();
         if (event.keyCode === 13) {
           event.preventDefault();
-          AutoCom.addTagToList(tag, AutoCom.postTagsUl);
+          AutoCom.input.val('');
+          if (!AutoCom.tagExists(tag, AutoCom.postTagsUl)) {
+            AutoCom.addTagToList(tag, AutoCom.postTagsUl);
+          }
         }
         AutoCom.searchTags(tag);
       }
     });
-    //on key press do search
-    //return search to another list
-    //attach ul
-    //on choose from serached tags add lo list
   }
 };
 
