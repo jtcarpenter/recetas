@@ -18,4 +18,4 @@
 //= require ckeditor/config
 //= require posts
 //= require_self
-// require_tree .
+//= require_tree .
