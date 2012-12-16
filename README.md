@@ -45,7 +45,13 @@ Launch the database with:
 
 #### Seed Database
 
+##### SQLite3
+
     $ rakedb:seed
+
+##### PostgreSQL
+
+    $ RAILS_ENV=staging rake db:seed
 
 #### Truncate Database
 
