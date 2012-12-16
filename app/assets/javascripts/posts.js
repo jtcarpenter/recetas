@@ -102,6 +102,7 @@ var AutoCom = {
   },
 
   addTagToList: function (tag, ul) {
+    if (tag === '') return;
     var li = $('<li/>').text(tag);
     var del = $(AutoCom.deleteBtn).click(AutoCom.deleteTag);
     li.append(del);
