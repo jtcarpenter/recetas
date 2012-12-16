@@ -1,3 +1,4 @@
+console.log("This was not manualluy precompile before push to heroku");
 var AutoCom = {
   input: {},
   label: {},
