@@ -8,7 +8,17 @@
 require 'rubygems'           #so it can load gems
 require 'factory_girl_rails' #so it can run in development
 
+Post.delete_all
+if (ENV['RAILS_ENV'] == 'production')
+  ActiveRecord::Base.connection.execute("TRUNCATE taggings")
+  ActiveRecord::Base.connection.execute("TRUNCATE tags")
+else
+  ActiveRecord::Base.connection.execute("DELETE FROM taggings")
+  ActiveRecord::Base.connection.execute("DELETE FROM tags")
+end
+
 100.times do
   FactoryGirl.create(:post)
 end
+
 

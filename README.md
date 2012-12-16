@@ -53,10 +53,6 @@ Launch the database with:
 
     $ RAILS_ENV=staging rake db:seed
 
-#### Truncate Database
-
-    ...
-
 ### Create initial local user
 
     $ rails runner script/new_user email@address.com true
