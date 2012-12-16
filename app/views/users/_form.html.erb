@@ -11,23 +11,35 @@
   <% end %>
 
   <% if (current_page?(:controller => 'posts', :action => 'new')) %>
-    <div><%= f.label :admin, t("users.form.admin") %><br />
-    <%= f.check_box :admin %></div>
+    <div class="field">
+      <%= f.label :admin, t("users.form.admin") %><br />
+      <%= f.check_box :admin %>
+    </div>
   <% elsif @user.admin %>
     <%= f.hidden_field :admin %>
   <% end %>
 
-  <div><%= f.label :email, t("users.form.email") %><br />
-  <%= f.email_field :email %></div>
+  <div class="field">
+    <%= f.label :email, t("users.form.email") %><br />
+    <%= f.email_field :email %>
+  </div>
 
-  <div><%= f.label :name, t("users.form.name") %><br />
-  <%= f.text_field :name %></div>
+  <div class="field">
+    <%= f.label :name, t("users.form.name") %><br />
+    <%= f.text_field :name %>
+  </div>
 
-  <div><%= f.label :password, t("users.form.password") %><br />
-  <%= f.password_field :password %></div>
+  <div class="field">
+    <%= f.label :password, t("users.form.password") %><br />
+    <%= f.password_field :password %>
+  </div>
 
-  <div><%= f.label :password_confirmation, t("users.form.password_confirmation") %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <div class="field">
+    <%= f.label :password_confirmation, t("users.form.password_confirmation") %><br />
+    <%= f.password_field :password_confirmation %>
+  </div>
 
-  <div><%= f.submit t("users.form.save"), :id => 'create_user', :class => 'btn' %></div>
+  <div class="actions">
+    <%= f.submit t("users.form.save"), :id => 'create_user', :class => 'btn' %>
+  </div>
 <% end %>

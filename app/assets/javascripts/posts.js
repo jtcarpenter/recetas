@@ -1,4 +1,3 @@
-console.log("This was not manualluy precompile before push to heroku");
 var AutoCom = {
   input: {},
   label: {},
@@ -9,7 +8,7 @@ var AutoCom = {
   deleteBtn: '<span class="delete">x</span>',
 
   initDOM: function (form) {
-    AutoCom.input = $('#tags-input');
+    AutoCom.input = $('#post_tag_list');
     AutoCom.label = $('#tags-label');
     AutoCom.tagsUl = $('<ul/>', {'id': 'tags'});
     AutoCom.postTagsUl = $('<ul/>', {'id': 'post-tags'});
