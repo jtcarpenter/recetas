@@ -1,3 +1,4 @@
+console.log('test');
 var AutoCom = {
   input: {},
   label: {},
