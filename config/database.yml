@@ -47,6 +47,6 @@ production:
   reconnect: false
   database: recetas_production
   pool: 5
-  username: root
+  username: recetas
   password:
-  socket: /tmp/mysql.sock
+  socket:
