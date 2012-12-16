@@ -136,7 +136,6 @@ var AutoCom = {
 
 $(document).ready(function () {
   "use strict"
-  var form = $('.edit_post')[0];
-  console.log(form);
+  var form = $('.edit_post, .new_post')[0];
   if (form !== undefined) AutoCom.init(form);
 });
