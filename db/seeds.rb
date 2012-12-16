@@ -5,3 +5,10 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+require 'rubygems'           #so it can load gems
+require 'factory_girl_rails' #so it can run in development
+
+100.times do
+  FactoryGirl.create(:post)
+end
+

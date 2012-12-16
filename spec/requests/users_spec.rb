@@ -31,7 +31,7 @@ describe 'user management' do
     visit users_path
     expect {
       within "#user_#{user.id}" do
-        click_link "destroy"
+        click_link "destroy#{user.id}"
       end
       if (@selenium)
         alert = page.driver.browser.switch_to.alert
