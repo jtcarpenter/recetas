@@ -1,3 +1,7 @@
+<% content_for :javascripts do %>
+  <%= javascript_include_tag 'admin' %>  
+<% end %>
+
 <%= form_for @post, :hmtl => {:multipart => true} do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
