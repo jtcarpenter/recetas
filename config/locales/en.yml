@@ -5,7 +5,7 @@ en:
   language_str: "english"
   layouts:
     application:
-      title: "Marta's Recipes"
+      title: "Marta's <br/> Recipes"
       search_button: "Search"
   views:
     pagination:

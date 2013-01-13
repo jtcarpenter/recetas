@@ -1,6 +1,18 @@
 body {
-  font-family: $cambria;
+  font-family: $lucida;
 }
+
+/*
+body,
+.container-fluid {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.navbar {
+  margin-bottom: 0;
+}
+*/
 
 .navbar-inner {
   border-top:0;

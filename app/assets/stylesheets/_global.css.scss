@@ -1,0 +1,37 @@
+body {
+  background: $white;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  color: $red;
+}
+
+p {
+  color: $yellow;
+}
+
+a {
+  color: $green;
+}
+
+a:hover {
+  color: $grey;
+}
+
+header h1 {
+  background: url('tomatoes.jpg') left no-repeat;
+  height: 250px;
+  text-align: right;
+  margin-top: 0;
+}
+
+header a,
+header a:hover {
+  text-decoration: none;
+  display:block;
+}
+
+header h1 span {
+  background: $white;
+
+}
