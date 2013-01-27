@@ -25,3 +25,7 @@ body,
 .icon-remove {
   background-image: url(image_path("glyphicons-halflings.png"));
 }
+
+input, input.btn, label {
+  color: $green;
+}

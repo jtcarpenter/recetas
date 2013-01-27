@@ -64,6 +64,9 @@ es:
     user:
       by: "Por"
       last_updated_by: "Última actualización de"
+  comments:
+    form:
+      submit: "Publicar"
   users:
     created: "creado"
     successfully_updated: "Actualizado con éxito."

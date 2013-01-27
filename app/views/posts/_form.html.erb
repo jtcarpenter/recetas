@@ -2,7 +2,7 @@
   <%= javascript_include_tag 'admin' %>  
 <% end %>
 
-<%= form_for @post, :hmtl => {:multipart => true} do |f| %>
+<%= form_for(@post, :builder => SmartLabelFormBuilder, :hmtl => {:multipart => true}) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= t('posts.form.errors', :count => @post.errors.count) %> <%= t("posts.form.errors_message") %></h2>
@@ -15,32 +15,36 @@
   <% end %>
 
   <div class="field">
-    <%= f.label :title, t("posts.form.title") %><br />
+    <%= f.label :title, t("posts.form.title") %>
     <%= f.text_field :title %>
   </div>
   <div class="field">
-    <%= f.label :published, t("posts.form.published") %><br />
-    <%= f.check_box :published %>
+    <%= f.label(:published) do %>
+      <%= f.check_box :published %>
+      <%= t("posts.form.published") %>
+    <% end %>
   </div>
   <div class="field">
-    <%= f.label :summary, t("posts.form.summary") %><br />
-    <%= f.text_area :summary %>
+    <%= f.label :summary, t("posts.form.summary") %>
+    <%= f.text_area :summary, :rows => '5', :cols => '' %>
   </div>
   <div class="field">
-    <%= image_tag(@post.image_url(:thumb)) if @post.image? %><br />
+    <%= image_tag(@post.image_url(:thumb)) if @post.image? %>
     <%= f.file_field :image %>
     <%= f.hidden_field :image_cache %>
   </div>
   <div class="field">
-    <%= f.check_box :remove_image %>
-    <%= f.label :remove_image, t("posts.form.remove_image") %><br />
+    <%= f.label(:remove_image) do %>
+       <%= f.check_box :remove_image %>
+      <%= t("posts.form.remove_image") %>
+    <% end %>
   </div>
   <div class="field">
-    <%= f.label :tag_list, t("posts.form.tag_list"), :id => 'tags-label' %><br />
+    <%= f.label :tag_list, t("posts.form.tag_list"), :id => 'tags-label' %>
     <%= f.text_field :tag_list %>
   </div>
   <div class="field">
-    <%= f.label :content, t("posts.form.content") %><br />
+    <%= f.label :content, t("posts.form.content") %>
     <%= cktext_area :post, :content %>
   </div>
 

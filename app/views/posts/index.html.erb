@@ -1,5 +1,5 @@
 <h1><%= t("posts.index.title") %></h1>
-<ol>
+<ol class="posts index">
 <% @posts.each do |post| %>
   <li>
     <h2><%= link_to post.title, post %></h2>
