@@ -2,7 +2,8 @@ es:
   language_str: "spanish"
   layouts:
     application:
-      title: "Recetas <br/>de Marta"
+      title: "Recetas de Marta"
+      two_line_title: "Recetas <br/>de Marta"
       search_button: "Buscar"
   views:
     pagination:
