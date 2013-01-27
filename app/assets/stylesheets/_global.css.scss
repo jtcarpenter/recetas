@@ -10,12 +10,14 @@ p {
   color: $yellow;
 }
 
-a {
+a,
+.gap {
   color: $green;
 }
 
 a:hover {
   color: $grey;
+  text-decoration:none;
 }
 
 header h1 {
@@ -23,15 +25,12 @@ header h1 {
   height: 250px;
   text-align: right;
   margin-top: 0;
+  span {
+    background: $white;
+  }
 }
 
-header a,
-header a:hover {
+header a {
   text-decoration: none;
   display:block;
-}
-
-header h1 span {
-  background: $white;
-
 }

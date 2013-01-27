@@ -14,6 +14,7 @@ en:
       next: "&gt;"
       first: "&lt;&lt;"
       last: "&gt;&gt;"
+      truncate: "&hellip;"
   shared:
     admin_nav:
       new_post_link: "New Post"
