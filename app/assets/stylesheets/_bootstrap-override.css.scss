@@ -26,6 +26,10 @@ body,
   background-image: url(image_path("glyphicons-halflings.png"));
 }
 
-input, input.btn, label {
+input, .btn, label {
   color: $green;
+}
+
+.btn-primary {
+  color: $white;
 }
