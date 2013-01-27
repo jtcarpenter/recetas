@@ -12,8 +12,10 @@
 
   <% if (current_page?(:controller => 'posts', :action => 'new')) %>
     <div class="field">
-      <%= f.label :admin, t("users.form.admin") %>
-      <%= f.check_box :admin %>
+      <%= f.label(:admin, :class => 'checkbox') do %>
+        <%= f.check_box :admin %>
+        <%= t("users.form.admin") %>
+      <% end %>
     </div>
   <% elsif @user.admin %>
     <%= f.hidden_field :admin %>
@@ -21,22 +23,22 @@
 
   <div class="field">
     <%= f.label :email, t("users.form.email") %>
-    <%= f.email_field :email %>
+    <%= f.email_field :email, :placeholder => t("users.form.email") %>
   </div>
 
   <div class="field">
     <%= f.label :name, t("users.form.name") %>
-    <%= f.text_field :name %>
+    <%= f.text_field :name, :placeholder => t("users.form.name") %>
   </div>
 
   <div class="field">
     <%= f.label :password, t("users.form.password") %>
-    <%= f.password_field :password %>
+    <%= f.password_field :password, :placeholder => t("users.form.password") %>
   </div>
 
   <div class="field">
     <%= f.label :password_confirmation, t("users.form.password_confirmation") %>
-    <%= f.password_field :password_confirmation %>
+    <%= f.password_field :password_confirmation, :placeholder => t("users.form.password_confirmation") %>
   </div>
 
   <div class="actions">

@@ -67,8 +67,11 @@ en:
       by: "By"
       last_updated_by: "Last updated by"
   comments:
+    title: "Comments"
+    subtitle: "Add a comment"
     form:
       submit: "Post"
+      comment: "Comment"
   users:
     created: "created"
     successfully_updated: "Successfully updated."

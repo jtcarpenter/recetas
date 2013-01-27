@@ -3,9 +3,9 @@
     <span><%= raw(t("layouts.application.two_line_title")) %></span>
   </h1>
 <% end %>
-<%= form_tag posts_path, method: :get, :class => 'search-form' do %>
+<%= form_tag posts_path, method: :get, :class => 'search-form form-search' do %>
   <div class="field input-append">
-    <%= text_field_tag :search, params[:search] %>
+    <%= text_field_tag :search, params[:search], :class => 'search-query' %>
     <%= submit_tag t("layouts.application.search_button"), name: nil, :class => 'btn' %>
   </div>
 <% end %>

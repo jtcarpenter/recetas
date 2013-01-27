@@ -2,7 +2,7 @@
   <%= javascript_include_tag 'admin' %>  
 <% end %>
 
-<%= form_for(@post, :builder => SmartLabelFormBuilder, :hmtl => {:multipart => true}) do |f| %>
+<%= form_for(@post, :builder => SmartLabelFormBuilder, :hmtl => {:multipart => true, :class => 'form-horizontal'}) do |f| %>
   <% if @post.errors.any? %>
     <div id="error_explanation">
       <h2><%= t('posts.form.errors', :count => @post.errors.count) %> <%= t("posts.form.errors_message") %></h2>
@@ -16,17 +16,17 @@
 
   <div class="field">
     <%= f.label :title, t("posts.form.title") %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title, :placeholder => t("posts.form.title") %>
   </div>
-  <div class="field">
-    <%= f.label(:published) do %>
+  <div class="field form-inline">
+    <%= f.label(:published, :class => 'checkbox') do %>
       <%= f.check_box :published %>
       <%= t("posts.form.published") %>
     <% end %>
   </div>
   <div class="field">
     <%= f.label :summary, t("posts.form.summary") %>
-    <%= f.text_area :summary, :rows => '5', :cols => '' %>
+    <%= f.text_area :summary, :rows => '5', :cols => '', :placeholder => t("posts.form.summary") %>
   </div>
   <div class="field">
     <%= image_tag(@post.image_url(:thumb)) if @post.image? %>
@@ -34,7 +34,7 @@
     <%= f.hidden_field :image_cache %>
   </div>
   <div class="field">
-    <%= f.label(:remove_image) do %>
+    <%= f.label(:remove_image, :class => 'checkbox') do %>
        <%= f.check_box :remove_image %>
       <%= t("posts.form.remove_image") %>
     <% end %>

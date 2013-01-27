@@ -19,8 +19,8 @@
       <%= render 'shared/header' %>
     </div>
   </header>
-  <section class="row-fluid">
-    <section class="span9 main">
+  <div class="row-fluid">
+    <div class="span9 main">
       <% if(notice) %>
         <p class="notice"><%= notice %></p>
       <% end %>
@@ -28,11 +28,11 @@
         <p class="alert"><%= alert %></p>
       <% end %>
       <%= yield %>
-    </section>
+    </div>
     <aside class="span3 sidebar">
       <%= render 'shared/sidebar' %>
     </aside>
-  </section>
+  </div>
   <footer class="row-fluid">
     <div class="span6 offset6">
       <%= render 'shared/footer' %>

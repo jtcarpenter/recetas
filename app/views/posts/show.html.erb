@@ -31,11 +31,11 @@
   </small>
 <% end %>
 
-<h2>Comments</h2>
+<h2><%= t("comments.title") %></h2>
 <%= render @post.comments %>
 
 <% if user_signed_in? %>
-  <h2>Add a comment:</h2>
+  <h3><%= t("comments.subtitle") %> </h3>
   <%= render "comments/form" %>
 <% end %>
 </article>

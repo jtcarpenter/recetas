@@ -65,8 +65,11 @@ es:
       by: "Por"
       last_updated_by: "Última actualización de"
   comments:
+    title: "Comentarios"
+    subtitle: "Añadir un comentario"
     form:
       submit: "Publicar"
+      comment: "Comentario"
   users:
     created: "creado"
     successfully_updated: "Actualizado con éxito."
