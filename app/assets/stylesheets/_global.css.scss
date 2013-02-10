@@ -31,9 +31,15 @@ header h1 {
   height: 250px;
   text-align: right;
   margin-top: 0;
+  margin-left: -20px;
+  margin-right: -20px;
   span {
     background: $white;
   }
+}
+
+header span {
+  padding-right: 20px;
 }
 
 header a {

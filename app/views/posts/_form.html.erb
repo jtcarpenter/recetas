@@ -34,6 +34,7 @@
     </div>
   </div>
   <div class="field control-group">
+    <%= f.label :summary, t("posts.form.image"), :class => 'control-label' %>
     <div class="controls">
       <%= image_tag(@post.image_url(:thumb)) if @post.image? %>
       <%= f.file_field :image %>

@@ -2,11 +2,6 @@ body {
   font-family: $lucida;
 }
 
-header h1 {
-  margin-left: -20px;
-  margin-right: -20px;
-}
-
 .navbar {
   margin-bottom: 0;
   background: none;
@@ -37,5 +32,5 @@ input, .btn, label {
 }
 
 input[type="file"] {
-  line-height: 18px;
+  /*line-height: 18px;*/
 }
