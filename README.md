@@ -21,7 +21,7 @@ the Gmail and AWS keys:
 #### PostgreSQL
 
 Postgres is used for full text search. The application will 
-default to using a simple like search if postgres is not i.e. 
+default to using a simple like search if postgres is not available i.e. 
 in the development and test environments, where sqlite is used 
 as the DBMS instead.
 

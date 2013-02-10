@@ -1,6 +1,8 @@
 class Post < ActiveRecord::Base
-  attr_accessible :image, :published, :summary, :title, :image_cache, :remove_image, :tag_list, :content, :user
+  attr_accessible :image, :published, :summary, :title, :image_cache, :remove_image, :tag_list, :content, :user, :ingredients_image, :remove_ingredients_image, :ingredients_image_cache, :preparation_image, :remove_preparation_image, :preparation_image_cache
   mount_uploader :image, ImageUploader
+  mount_uploader :ingredients_image, IngredientsImageUploader
+  mount_uploader :preparation_image, PreparationImageUploader
   validates :title, :presence => true
   validates :content, :presence => true, :length => { :minimum => 5 }
   acts_as_taggable

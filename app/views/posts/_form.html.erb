@@ -51,6 +51,32 @@
       </div>
     </div>
   <% end %>
+
+
+  <%if false%>
+  <% if @post.ingredients_image? %>
+    <div class="field form-inline control-group">
+      <div class="controls">
+        <%= f.label(:remove_ingredients_image, :class => 'checkbox') do %>
+           <%= f.check_box :remove_ingredients_image %>
+          <%= t("posts.form.remove_image") %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <% if @post.preparation_image? %>
+    <div class="field form-inline control-group">
+      <div class="controls">
+        <%= f.label(:remove_preparation_image, :class => 'checkbox') do %>
+           <%= f.check_box :remove_preparation_image %>
+          <%= t("posts.form.remove_image") %>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+  <%end%>
+
+
   <div class="field control-group">
     <%= f.label :tag_list, t("posts.form.tag_list"), :id => 'tags-label', :class => 'control-label' %>
     <div class="controls">
