@@ -1,4 +1,8 @@
-<%- if controller_name != 'sessions' %>
+<div class="form-horizontal">
+<div class="actions control-group">
+<div class="controls">
+
+  <%- if controller_name != 'sessions' %>
   <%= link_to t("devise.shared.sign_in_link"), new_session_path(resource_name), :class => 'btn' %><br />
 <% end -%>
 
@@ -23,3 +27,7 @@
     <%= link_to "#{t("devise.shared.sign_in_with")} #{provider.to_s.titleize}", omniauth_authorize_path(resource_name, provider), :class => 'btn' %><br />
   <% end -%>
 <% end -%>
+
+</div>
+</div>
+</div>

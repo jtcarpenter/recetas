@@ -1,12 +1,20 @@
 <h2><%= t("devise.confirmations.resend_instructions") %></h2>
 
-<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post }) do |f| %>
+<%= form_for(resource, :as => resource_name, :url => confirmation_path(resource_name), :html => { :method => :post, :class => 'form-horizontal' }, :builder => SmartLabelFormBuilder) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email, t("devise.confirmations.email") %><br />
-  <%= f.email_field :email %></div>
+  <div class="field control-group">
+    <%= f.label :email, t("devise.confirmations.email"), :class => 'control-label' %>
+    <div class="controls">
+      <%= f.email_field :email, :class => 'input-xlarge' %>
+    </div>
+  </div>
 
-  <div><%= f.submit t("devise.confirmations.resend_instructions_link"), :class => 'btn' %></div>
+  <div class="actions control-group">
+    <div class="controls">
+      <%= f.submit t("devise.confirmations.resend_instructions_link"), :class => 'btn' %>
+    </div>
+  </div>
 <% end %>
 
 <%= render "devise/shared/links" %>

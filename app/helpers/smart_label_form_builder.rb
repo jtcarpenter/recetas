@@ -1,3 +1,4 @@
+# Allows the nesting of inputs inside labels
 class SmartLabelFormBuilder < ActionView::Helpers::FormBuilder
   def label(method, content_or_options_with_block = nil, options = {}, &block)
     if !block_given?
