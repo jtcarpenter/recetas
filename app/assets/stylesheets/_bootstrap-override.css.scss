@@ -2,23 +2,38 @@ body {
   font-family: $lucida;
 }
 
-/*
-body,
+/*body,
 .container-fluid {
   padding-left: 0;
   padding-right: 0;
+}*/
+
+header h1 {
+  margin-left: -20px;
+  margin-right: -20px;
 }
 
 .navbar {
-  margin-bottom: 0;
+  margin-bottom: 1px;
+  background: none;
 }
-*/
 
-.navbar-inner {
+/*.navbar-inner {
   border-top:0;
   -webkit-border-radius: 0 0 4px 4px;
   -moz-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
+}*/
+
+.navbar-inner {
+  border:0;
+  -webkit-border-radius: 0 0;
+  -moz-border-radius: 0 0;
+  border-radius: 0 0;
+  background: none;
+  -webkit-box-shadow: none;
+  -moz-box-shadow: none;
+  box-shadow: none;
 }
 
 .icon-pencil,
