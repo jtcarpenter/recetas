@@ -33,8 +33,10 @@
       <%= f.text_area :summary, :rows => '5', :cols => '', :placeholder => t("posts.form.summary"), :class => 'input-xlarge' %>
     </div>
   </div>
+
+<!-- images -->
   <div class="field control-group">
-    <%= f.label :summary, t("posts.form.image"), :class => 'control-label' %>
+    <%= f.label :image, t("posts.form.image"), :class => 'control-label' %>
     <div class="controls">
       <%= image_tag(@post.image_url(:thumb)) if @post.image? %>
       <%= f.file_field :image %>
@@ -52,8 +54,14 @@
     </div>
   <% end %>
 
-
-  <%if false%>
+  <div class="field control-group">
+    <%= f.label :ingredients_image, t("posts.form.ingredients_image"), :class => 'control-label' %>
+    <div class="controls">
+      <%= image_tag(@post.ingredients_image_url(:thumb)) if @post.ingredients_image? %>
+      <%= f.file_field :ingredients_image %>
+      <%= f.hidden_field :ingredients_image_cache %>
+    </div>
+  </div>
   <% if @post.ingredients_image? %>
     <div class="field form-inline control-group">
       <div class="controls">
@@ -64,6 +72,15 @@
       </div>
     </div>
   <% end %>
+
+  <div class="field control-group">
+    <%= f.label :preparation_image, t("posts.form.preparation_image"), :class => 'control-label' %>
+    <div class="controls">
+      <%= image_tag(@post.preparation_image_url(:thumb)) if @post.preparation_image? %>
+      <%= f.file_field :preparation_image %>
+      <%= f.hidden_field :preparation_image_cache %>
+    </div>
+  </div>
   <% if @post.preparation_image? %>
     <div class="field form-inline control-group">
       <div class="controls">
@@ -74,8 +91,7 @@
       </div>
     </div>
   <% end %>
-  <%end%>
-
+<!-- end images -->
 
   <div class="field control-group">
     <%= f.label :tag_list, t("posts.form.tag_list"), :id => 'tags-label', :class => 'control-label' %>

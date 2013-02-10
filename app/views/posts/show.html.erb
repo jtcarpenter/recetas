@@ -15,9 +15,21 @@
   </p>
 <% end %>
 
+<!-- images -->
 <% if @post.image.to_s != "" %>
   <%= image_tag @post.image_url(:show).to_s %>
 <% end %>
+
+<!-- TODO: position these as desired -->
+<% if @post.ingredients_image.to_s != "" %>
+  <% image_tag @post.ingredients_image_url(:show).to_s %>
+<% end %>
+
+<% if @post.preparation_image.to_s != "" %>
+  <% image_tag @post.preparation_image_url(:show).to_s %>
+<% end %>
+<!-- end new images -->
+
 <p>
   <%= t("posts.tags.name") %>: <%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 </p>

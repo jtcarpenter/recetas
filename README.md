@@ -47,7 +47,7 @@ Launch the database with:
 
 ##### SQLite3
 
-    $ rakedb:seed
+    $ rake db:seed
 
 ##### PostgreSQL
 
