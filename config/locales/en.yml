@@ -43,7 +43,9 @@ en:
       summary: "Summary"
       image: "Image (result)"
       ingredients_image: "Image (ingredients)"
+      ingredients: "Ingredients"
       preparation_image: "Image (preparation)"
+      instructions: "Instructions"
       content: "Content"
       create: "Save"
       remove_image: "Remove Image"
@@ -122,4 +124,10 @@ en:
               blank: "The title cannot be blank"
             content:
               blank: "You must add some content"
+              too_short: "You must add a little bit more content"
+            ingredients:
+              blank: "You must add some ingredients"
+              too_short: "You must add a little bit more content"
+            instructions:
+              blank: "You must add some instructions"
               too_short: "You must add a little bit more content"

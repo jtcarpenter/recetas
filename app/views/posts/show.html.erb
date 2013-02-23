@@ -9,33 +9,38 @@
   <%= "#{t("posts.user.by")} " %><%= link_to @post.user.name, posts_users_path(@post.user.id) %>
 <% end %>
 
+<!-- Optional Image -->
+<% if @post.image.to_s != "" %>
+  <%= image_tag @post.image_url(:show).to_s %>
+<% end %>
+
+<!-- Optional Summary -->
 <% if @post.summary.to_s != "" %>
   <p>
     <%= @post.summary %>
   </p>
 <% end %>
 
-<!-- images -->
-<% if @post.image.to_s != "" %>
-  <%= image_tag @post.image_url(:show).to_s %>
-<% end %>
-
-<!-- TODO: position these as desired -->
+<!-- Optinal Ingredients Image -->
 <% if @post.ingredients_image.to_s != "" %>
   <% image_tag @post.ingredients_image_url(:show).to_s %>
 <% end %>
 
+<!-- TODO: Ingredients -->
+
+<!-- Preparation Image -->
 <% if @post.preparation_image.to_s != "" %>
   <% image_tag @post.preparation_image_url(:show).to_s %>
 <% end %>
-<!-- end new images -->
+
+<!-- TODO: Instructions -->
 
 <p>
   <%= t("posts.tags.name") %>: <%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
 </p>
-<p>
+<!-- <p>
   <%= raw @post.content %>
-</p>
+</p> -->
 <% if user_signed_in? && current_user == @post.user %>
   <span class="icon-pencil"></span>
   <small>

@@ -41,7 +41,9 @@ es:
       summary: "Resumen"
       image: "Imagen (resultado)"
       ingredients_image: "Imagen (ingredientes)"
-      preparation_image: "Imagen (preparación)"
+      ingredients: "Ingredientes"
+      preparation_image: "Image (preparation)"
+      instructions: "Instrucciones"
       content: "Contenido"
       create: "Guardar"
       remove_image: "Quitar imagen"
@@ -121,3 +123,9 @@ es:
             content:
               blank: "Debe añadir algún contenido"
               too_short: "Debe añadir contenido un poco más"
+            ingredients:
+              blank: "Debe añadir algúnos ingredientes"
+              too_short: "Debe añadir un poco más contenido"
+            instructions:
+              blank: "Debe añadir algúnas Instrucciones"
+              too_short: "Debe añadir un poco más contenido"

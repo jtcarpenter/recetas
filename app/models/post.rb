@@ -1,10 +1,15 @@
 class Post < ActiveRecord::Base
-  attr_accessible :image, :published, :summary, :title, :image_cache, :remove_image, :tag_list, :content, :user, :ingredients_image, :remove_ingredients_image, :ingredients_image_cache, :preparation_image, :remove_preparation_image, :preparation_image_cache
+  attr_accessible :image, :published, :summary, :title, :image_cache, :remove_image, 
+                  :tag_list, :user, :ingredients_image, :remove_ingredients_image, 
+                  :ingredients_image_cache, :preparation_image, :remove_preparation_image, 
+                  :preparation_image_cache, :ingredients, :instructions#, :content
   mount_uploader :image, ImageUploader
   mount_uploader :ingredients_image, IngredientsImageUploader
   mount_uploader :preparation_image, PreparationImageUploader
   validates :title, :presence => true
-  validates :content, :presence => true, :length => { :minimum => 5 }
+  #validates :content, :presence => true, :length => { :minimum => 5 }
+  validates :ingredients, :presence => true, :length => { :minimum => 5 }
+  validates :instructions, :presence => true, :length => { :minimum => 5 }
   acts_as_taggable
   has_many  :comments, :dependent => :destroy
   belongs_to :user
@@ -31,13 +36,15 @@ class Post < ActiveRecord::Base
       rank = <<-RANK
         ts_rank(to_tsvector('#{lang}', title), plainto_tsquery('#{lang}', #{sanitize(search)})) +
         ts_rank(to_tsvector('#{lang}', summary), plainto_tsquery('#{lang}', #{sanitize(search)})) +
-        ts_rank(to_tsvector('#{lang}', content), plainto_tsquery('#{lang}',#{sanitize(search)}))
+        ts_rank(to_tsvector('#{lang}', ingredients), plainto_tsquery('#{lang}',#{sanitize(search)})) +
+        ts_rank(to_tsvector('#{lang}', instructions), plainto_tsquery('#{lang}',#{sanitize(search)}))
       RANK
 
       where("
         to_tsvector('#{lang}', title) @@ plainto_tsquery('#{lang}', #{sanitize(search)}) OR
         to_tsvector('#{lang}', summary) @@ plainto_tsquery('#{lang}', #{sanitize(search)}) OR
-        to_tsvector('#{lang}', content) @@ plainto_tsquery('#{lang}', #{sanitize(search)})
+        to_tsvector('#{lang}', ingredients) @@ plainto_tsquery('#{lang}', #{sanitize(search)}) OR
+        to_tsvector('#{lang}', instructions) @@ plainto_tsquery('#{lang}', #{sanitize(search)})
         ").order("#{rank} desc")
     else
       simple_search(search)
