@@ -1,39 +1,63 @@
 <article>
-<h1><%= @post.title %></h1>
+<hgroup>
+  <h1><%= @post.title %></h1>
 
-<% if user_signed_in? %>
-  <p id="notice"><%= notice %></p>
-<% end %>
+  <% if user_signed_in? %>
+    <p id="notice"><%= notice %></p>
+  <% end %>
 
-<% if @post.user %>
-  <%= "#{t("posts.user.by")} " %><%= link_to @post.user.name, posts_users_path(@post.user.id) %>
-<% end %>
+  <% if @post.user %>
+    <h2>
+      <%= "#{t("posts.user.by")} " %><%= link_to @post.user.name, posts_users_path(@post.user.id) %>
+    </h2>
+  <% end %>
+</hgroup>
 
-<!-- Optional Image -->
-<% if @post.image.to_s != "" %>
-  <%= image_tag @post.image_url(:show).to_s %>
-<% end %>
+<section class="summary">
+  <% if @post.image.to_s != "" %>
+    <%= image_tag @post.image_url(:show).to_s %>
+  <% end %>
+  <!-- Optional Summary -->
+  <% if @post.summary.to_s != "" %>
+    <p>
+      <%= @post.summary %>
+    </p>
+  <% end %>
+</section>
 
-<!-- Optional Summary -->
-<% if @post.summary.to_s != "" %>
-  <p>
-    <%= @post.summary %>
-  </p>
-<% end %>
+<section class="ingredients">
+  <h1><%= t("posts.ingredients_title") %></h1>
+  <% if @post.ingredients_image.to_s != "" %>
+    <%= image_tag @post.ingredients_image_url(:show).to_s %>
+  <% end %>
+  <ul>
+  <% ingredients = @post.ingredients.strip.split(/(?:^\*)|(?:[\n]\*)/) %>
+  <% ingredients.each do |ingredient| %>
+    <% if ingredient.strip != '' %>
+      <li>
+        <%= ingredient.strip %>
+      </li>
+    <% end %>
+  <% end %>
+  </ul>
+</section>
 
-<!-- Optinal Ingredients Image -->
-<% if @post.ingredients_image.to_s != "" %>
-  <% image_tag @post.ingredients_image_url(:show).to_s %>
-<% end %>
-
-<!-- TODO: Ingredients -->
-
-<!-- Preparation Image -->
-<% if @post.preparation_image.to_s != "" %>
-  <% image_tag @post.preparation_image_url(:show).to_s %>
-<% end %>
-
-<!-- TODO: Instructions -->
+<section class="instructions">
+  <h1><%= t("posts.instructions_title") %></h1>
+  <% if @post.preparation_image.to_s != "" %>
+    <%= image_tag @post.preparation_image_url(:show).to_s %>
+  <% end %>
+  <ol>
+  <% instructions = @post.instructions.strip.split(/(?:^\*)|(?:[\n]\*)/) %>
+  <% instructions.each do |instruction| %>
+    <% if instruction.strip != '' %>
+      <li>
+        <%= instruction.strip %>
+      </li>
+    <% end %>
+  <% end %>
+  </ol>
+</section>
 
 <p>
   <%= t("posts.tags.name") %>: <%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>

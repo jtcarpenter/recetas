@@ -28,6 +28,8 @@ es:
     title: "Etiquetas"
     tags_list: "Lista de etiquetas"
   posts:
+    ingredients_title: "Ingredientes"
+    instructions_title: "Instrucciones"
     successfully_created: "Entrada ha sido creado con éxito."
     successfully_updated: "Entrada ha sido actualizado con éxito."
     form:

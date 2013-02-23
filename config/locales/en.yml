@@ -30,6 +30,8 @@ en:
   tags:
     title: "Tags"
   posts:
+    ingredients_title: "Ingredients"
+    instructions_title: "Instructions"
     successfully_created: "Post was successfully created."
     successfully_updated: "Post was successfully updated."
     form:
