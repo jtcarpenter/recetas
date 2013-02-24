@@ -1,17 +1,19 @@
-<article>
-<hgroup>
-  <h1><%= @post.title %></h1>
+<article class="post">
+<header>
+  <hgroup>
+    <h1><%= @post.title %></h1>
+
+    <% if @post.user %>
+      <h2>
+        <%= "#{t("posts.user.by")} " %><%= link_to @post.user.name, posts_users_path(@post.user.id) %>
+      </h2>
+    <% end %>
+  </hgroup>
 
   <% if user_signed_in? %>
     <p id="notice"><%= notice %></p>
   <% end %>
-
-  <% if @post.user %>
-    <h2>
-      <%= "#{t("posts.user.by")} " %><%= link_to @post.user.name, posts_users_path(@post.user.id) %>
-    </h2>
-  <% end %>
-</hgroup>
+</header>
 
 <section class="summary">
   <% if @post.image.to_s != "" %>
@@ -58,24 +60,29 @@
   </ol>
 </section>
 
-<p>
-  <%= t("posts.tags.name") %>: <%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %>
-</p>
-<!-- <p>
-  <%= raw @post.content %>
-</p> -->
+<% if @post.tag_list.count > 0 %>
+  <aside class="tags">
+    <h2><%= t("posts.tags.name") %></h2>
+    <p><%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
+  </aside>
+<% end %>
+
 <% if user_signed_in? && current_user == @post.user %>
-  <span class="icon-pencil"></span>
-  <small>
-    <%= link_to t("posts.show.edit_post_link"), edit_post_path(@post) %>
-  </small>
+  <aside class="admin-actions">
+    <span class="icon-pencil"></span>
+    <small>
+      <%= link_to t("posts.show.edit_post_link"), edit_post_path(@post) %>
+    </small>
+  </aside>
 <% end %>
 
-<h2><%= t("comments.title") %></h2>
-<%= render @post.comments %>
+<aside>
+  <h2><%= t("comments.title") %></h2>
+  <%= render @post.comments %>
 
-<% if user_signed_in? %>
-  <h3><%= t("comments.subtitle") %> </h3>
-  <%= render "comments/form" %>
-<% end %>
+  <% if user_signed_in? %>
+    <h3><%= t("comments.subtitle") %> </h3>
+    <%= render "comments/form" %>
+  <% end %>
+</aside>
 </article>

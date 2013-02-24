@@ -4,6 +4,13 @@
   padding: 0;
 }
 
+@mixin rounded_corners($rad) {
+  -moz-border-radius: $rad;
+  -webkit-border-radius: $rad;
+  -khtml-border-radius: $rad;
+  border-radius: $rad;
+}
+
 body {
   background: $white;
 }
@@ -12,7 +19,7 @@ h1, h2, h3, h4, h5, h6 {
   color: $red;
 }
 
-p {
+p, li {
   color: $yellow;
 }
 
@@ -26,27 +33,74 @@ a:hover {
   text-decoration:none;
 }
 
-header h1 {
-  background: url('tomatoes.jpg') left no-repeat;
-  height: 250px;
-  text-align: right;
-  margin-top: 0;
-  margin-left: -20px;
-  margin-right: -20px;
-  span {
-    background: $white;
+header.document {
+  h1 {
+    background: url('tomatoes.jpg') left no-repeat;
+    height: 250px;
+    text-align: right;
+    margin-top: 0;
+    margin-left: -20px;
+    margin-right: -20px;
+    span {
+      background: $white;
+    }
   }
-}
-
-header span {
-  padding-right: 20px;
-}
-
-header a {
-  text-decoration: none;
-  display:block;
+  span {
+    padding-right: 20px;
+  }
+  a {
+    text-decoration: none;
+    display:block;
+  }
 }
 
 ol.index {
   @include reset_list();
+}
+
+article.post {
+  h2 {
+    color: $grey;
+  }
+  img {
+    margin-bottom: 1em;
+    @include rounded_corners(6px);
+  }
+  section, header, aside {
+    margin-bottom: .5em;
+  }
+  .ingredients ul {
+    @include reset_list();
+  }
+  .instructions ol {
+    @include reset_list();
+    counter-reset:li;
+  }
+  .ingredients li,  .instructions li {
+    padding-bottom: .5em;
+    padding-left: 30px;
+    line-height: 20px;
+  }
+  .ingredients li {
+    background-image: url(image_path("bullet.png"));
+    background-repeat: no-repeat;
+    background-position: 0 0;
+  }
+  .instructions li {
+    position: relative;
+  }
+  .instructions li:before {
+    content:counter(li);
+    counter-increment:li;
+    position: absolute;
+    width: 20px;
+    left: 0;
+    top: 0;
+    color: $white;
+    font-size: 12px;
+    text-align: center;
+    background-image: url(image_path("bullet.png"));
+    background-repeat: no-repeat;
+    background-position: 0 0;
+  }
 }
