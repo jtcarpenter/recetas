@@ -1,7 +1,7 @@
 <article class="post">
 <header>
   <hgroup>
-    <h1><%= @post.title %></h1>
+    <h1><%= @post.title %><i class="icon-print" id="print"></i></h1>
 
     <% if @post.user %>
       <h2>
@@ -61,14 +61,14 @@
 </section>
 
 <% if @post.tag_list.count > 0 %>
-  <aside class="tags">
+  <aside class="tags no-print">
     <h2><%= t("posts.tags.name") %></h2>
     <p><%= raw @post.tag_list.map { |t| link_to t, tag_path(t) }.join(', ') %></p>
   </aside>
 <% end %>
 
 <% if user_signed_in? && current_user == @post.user %>
-  <aside class="admin-actions">
+  <aside class="admin-actions no-print">
     <span class="icon-pencil"></span>
     <small>
       <%= link_to t("posts.show.edit_post_link"), edit_post_path(@post) %>
@@ -76,7 +76,7 @@
   </aside>
 <% end %>
 
-<aside>
+<aside class="no-print">
   <h2><%= t("comments.title") %></h2>
   <%= render @post.comments %>
 

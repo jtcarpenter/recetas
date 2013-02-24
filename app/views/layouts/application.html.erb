@@ -4,7 +4,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta charset="UTF-8">
   <title><%= t("layouts.application.title") %></title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= stylesheet_link_tag "application", :media => "all" %>
+  <% if @show %>
+    <%= stylesheet_link_tag "print", :media => "print" %>
+  <% end %>
   <%= javascript_include_tag "application" %>
   <%= content_for :javascripts %>
   <%= csrf_meta_tags %>
@@ -14,7 +17,7 @@
   <%= render 'shared/admin_nav' %>
 <% end %>
 <div class="container-fluid">
-  <header class="row-fluid document">
+  <header class="row-fluid document no-print">
     <div class="span12">
       <%= render 'shared/header' %>
     </div>
@@ -29,11 +32,11 @@
       <% end %>
       <%= yield %>
     </div>
-    <div class="span3 sidebar">
+    <div class="span3 sidebar no-print">
       <%= render 'shared/sidebar' %>
     </div>
   </div>
-  <footer class="row-fluid">
+  <footer class="row-fluid no-print">
     <div class="span6 offset6">
       <%= render 'shared/footer' %>
     </div>

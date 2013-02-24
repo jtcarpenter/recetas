@@ -19,7 +19,8 @@ body {
 }
 
 .icon-pencil,
-.icon-remove {
+.icon-remove,
+.icon-print {
   background-image: url(image_path("glyphicons-halflings.png"));
 }
 
@@ -31,6 +32,7 @@ input, .btn, label {
   color: $white;
 }
 
-input[type="file"] {
-  /*line-height: 18px;*/
+[class^="icon-"] .my-class,
+[class*=" icon-"] .my-class {
+  vertical-align: baseline;
 }

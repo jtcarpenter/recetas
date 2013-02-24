@@ -14,3 +14,4 @@
 //= require jquery_ujs
 //= require html5shiv
 //= require bootstrap
+//= require main

@@ -52,6 +52,7 @@ class PostsController < ApplicationController
   end
 
   def show
+    @show = true;
     @post = Post.find(params[:id])
     if !user_signed_in? && !@post.published
       redirect_to new_user_session_path

@@ -59,6 +59,11 @@ ol.index {
 }
 
 article.post {
+  .icon-print {
+    margin-top: 15px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
   h2 {
     color: $grey;
   }
