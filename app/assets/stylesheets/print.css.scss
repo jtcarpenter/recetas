@@ -1,3 +1,17 @@
-.no-print {
+.no-print, img {
   display: none !important;
+}
+
+.main article.post .instructions ol li:before {
+  content: '';
+}
+
+article.post ul li {
+  list-style: disc;
+  margin-left: 2em;
+}
+
+article.post ol li {
+  list-style: decimal;
+  margin-left: 2em;
 }
